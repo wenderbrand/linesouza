@@ -380,3 +380,27 @@ footer { padding:44px 64px; background:#130804; display:flex; align-items:center
   .porto-masonry{columns:2}
   .cta-h{font-size:clamp(2.4rem,8vw,5rem)}
 }
+/* ─────────────────────────────────────────────── DEPOIMENTOS */
+#depoimentos { padding:140px 64px; background:linear-gradient(180deg,#1a0c05 0%,#2C1508 100%); }
+.dep-head { max-width:1180px; margin:0 auto 72px; display:flex; align-items:flex-end; justify-content:space-between; flex-wrap:wrap; gap:32px; }
+.dep-h { font-family:'Cormorant Garamond',serif; font-size:clamp(2.4rem,4.8vw,4rem); font-weight:300; line-height:1.06; color:var(--cream); margin-top:18px; }
+.dep-h em { font-style:italic; color:var(--terra); }
+.dep-rating-avg { display:flex; flex-direction:column; align-items:flex-end; gap:8px; }
+.dep-avg-num { font-family:'Cormorant Garamond',serif; font-size:3.5rem; font-weight:300; color:var(--cream); line-height:1; }
+.dep-avg-stars { display:flex; gap:4px; }
+.dep-avg-stars svg { width:16px; height:16px; fill:var(--terra); }
+.dep-avg-label { font-size:.6rem; letter-spacing:.18em; text-transform:uppercase; color:rgba(240,235,227,.35); }
+.dep-slider-wrap { max-width:1180px; margin:0 auto; overflow:visible; }
+.dep-track { display:grid; grid-template-columns:repeat(3,1fr); gap:3px; }
+.dep-card { background:rgba(44,21,8,.6); border:1px solid rgba(175,87,18,.12); padding:48px 40px; display:flex; flex-direction:column; gap:28px; position:relative; }
+.dep-stars { display:flex; gap:6px; }
+.dep-stars svg { width:14px; height:14px; fill:var(--terra); }
+.dep-quote { font-family:'Cormorant Garamond',serif; font-size:1.15rem; font-weight:300; line-height:1.7; color:rgba(240,235,227,.82); flex:1; font-style:italic; }
+.dep-divider { width:32px; height:1px; background:var(--terra); opacity:.4; }
+.dep-author { display:flex; align-items:center; gap:16px; }
+.dep-avatar { width:42px; height:42px; border-radius:50%; background:var(--terra); display:flex; align-items:center; justify-content:center; font-family:'Cormorant Garamond',serif; font-size:1.2rem; color:var(--cream); font-weight:400; flex-shrink:0; }
+.dep-name { font-size:.82rem; font-weight:400; color:var(--cream); letter-spacing:.04em; }
+.dep-source { font-size:.65rem; color:rgba(240,235,227,.38); letter-spacing:.08em; margin-top:3px; }
+.dep-badge { display:flex; align-items:center; gap:8px; font-size:.58rem; letter-spacing:.14em; text-transform:uppercase; color:rgba(240,235,227,.25); margin-top:auto; }
+.dep-badge svg { width:12px; height:12px; fill:rgba(240,235,227,.25); flex-shrink:0; }
+@media(max-width:920px){ #depoimentos{padding:80px 28px} .dep-track{grid-template-columns:1fr} .dep-head{flex-direction:column;align-items:flex-start} .dep-rating-avg{align-items:flex-start} }
