@@ -1,491 +1,588 @@
-<!DOCTYPE html>
-<html lang="pt-BR">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Line Souza Designs — Identidade visual para empreendedores que desejam se posicionar com clareza e conquistar confiança no primeiro contato.">
-  <meta name="keywords" content="identidade visual, design gráfico, logotipo, branding, casamentos, Line Souza">
-  <meta name="author" content="Line Souza Designs">
+/* ─────────────────────────────────────────────── RESET */
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
-  <!-- Open Graph -->
-  <meta property="og:title" content="Line Souza Designs — Identidade Visual">
-  <meta property="og:description" content="Design que transforma negócios em marcas inesquecíveis.">
-  <meta property="og:type" content="website">
-  <meta property="og:url" content="https://linesouza.com.br">
+:root {
+  --terra:       #AF5712;  /* Simba */
+  --terra-dark:  #5B3315;  /* Raíz Autoral */
+  --terra-light: #C4681A;
+  --cream:       #EBEDEC;  /* Branco Gelo */
+  --brown:       #2C1508;
+  --brown-mid:   #5B3315;  /* Raíz Autoral */
+  --gold:        #99643A;  /* Cappuccino */
+}
 
-  <!-- Twitter Card -->
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Line Souza Designs">
-  <meta name="twitter:description" content="Identidade visual para empreendedores.">
+html { scroll-behavior: smooth; }
 
-  <title>Line Souza Designs — Identidade Visual</title>
+body {
+  font-family: 'Jost', sans-serif;
+  background: var(--brown);
+  color: var(--cream);
+  overflow-x: hidden;
+  cursor: none;
+}
 
-  <!-- Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Jost:wght@200;300;400;500&display=swap" rel="stylesheet">
+/* noise */
+body::after {
+  content: '';
+  position: fixed; inset: 0; pointer-events: none; z-index: 9000;
+  opacity: .03;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
 
-  <!-- Styles -->
-  <link rel="stylesheet" href="/src/style.css">
-</head>
-<body>
+/* ─────────────────────────────────────────────── CURSOR */
+.cur      { position:fixed; width:8px; height:8px; border-radius:50%; background:var(--terra); pointer-events:none; z-index:9999; transform:translate(-50%,-50%); transition:width .25s,height .25s; }
+.cur-ring { position:fixed; width:34px; height:34px; border-radius:50%; border:1px solid rgba(196,98,45,.45); pointer-events:none; z-index:9998; transform:translate(-50%,-50%); transition:width .3s,height .3s,border-color .3s; }
+.cur.big      { width:22px; height:22px; }
+.cur-ring.big { width:52px; height:52px; border-color:var(--terra); }
 
-<div class="cur" id="cur"></div>
-<div class="cur-ring" id="curRing"></div>
+/* ─────────────────────────────────────────────── NAV */
+nav {
+  position:fixed; top:0; left:0; right:0; z-index:800;
+  padding:28px 64px;
+  display:flex; align-items:center; justify-content:space-between;
+  transition:padding .5s, background .5s;
+}
+nav.stuck {
+  padding:16px 64px;
+  background:rgba(44,21,8,.92);
+  backdrop-filter:blur(18px);
+  border-bottom:1px solid rgba(175,87,18,.12);
+}
 
-<!-- ══ NAV ══ -->
-<nav id="nav">
-  <a class="nav-logo" href="#">
-    <svg class="nav-logo-svg" viewBox="0 0 425.63 109" xmlns="http://www.w3.org/2000/svg" aria-label="Line Souza Designs"><g><path d="M136.19,55.71h-29.4v-1.73c1.06-.03,1.91-.12,2.55-.27.67-.15,1.18-.41,1.55-.77.36-.36.61-.88.73-1.55.12-.67.18-1.53.18-2.59v-21.21c0-1.06-.06-1.91-.18-2.55-.09-.67-.3-1.18-.64-1.55-.3-.39-.76-.65-1.37-.77-.61-.15-1.4-.26-2.37-.32v-1.73h13.83v1.73c-.97.03-1.76.12-2.37.27-.58.15-1.03.43-1.36.82-.3.39-.52.94-.64,1.64-.09.7-.14,1.62-.14,2.78v19.61c0,1.27.12,2.32.36,3.14.27.79.71,1.41,1.32,1.87.64.42,1.47.73,2.5.91,1.03.15,2.34.23,3.91.23,1.73,0,3.18-.09,4.37-.27,1.18-.21,2.17-.56,2.96-1.05.82-.52,1.46-1.21,1.91-2.09.49-.91.89-2.08,1.23-3.5h1.73l-.68,8.96Z"/><path d="M149.64,47.11c0,1.52.06,2.71.18,3.6.12.88.35,1.56.68,2.05.36.49.86.8,1.5.96.67.15,1.53.24,2.59.27v1.73h-14.74v-1.73c1.06-.03,1.91-.12,2.55-.27.67-.18,1.18-.5,1.55-.96.36-.45.61-1.09.73-1.91.12-.85.18-1.99.18-3.41v-18.47c0-1.27-.06-2.32-.18-3.14-.09-.85-.3-1.52-.64-2-.3-.49-.76-.82-1.36-1-.61-.21-1.4-.35-2.37-.41v-1.73h13.83v1.73c-.97.03-1.76.15-2.37.36-.58.21-1.03.58-1.36,1.09-.3.49-.52,1.17-.64,2.05-.09.88-.14,2-.14,3.37v17.84Z"/><path d="M188.28,56.16l-21.61-28.48h-.18v19.43c0,1.52.05,2.71.14,3.6.12.88.33,1.56.64,2.05.33.49.79.8,1.37.96.61.15,1.39.24,2.37.27v1.73h-12.24v-1.73c1.06-.03,1.91-.12,2.55-.27.67-.18,1.18-.5,1.55-.96.36-.45.61-1.09.73-1.91.12-.85.18-1.99.18-3.41v-18.47c0-1.27-.06-2.32-.18-3.14-.09-.85-.3-1.52-.64-2-.3-.49-.76-.82-1.37-1-.61-.21-1.4-.35-2.37-.41v-1.73h9.01l19.89,26.53h.18v-17.93c0-1.49-.06-2.67-.18-3.55-.09-.91-.3-1.61-.64-2.09-.3-.49-.76-.8-1.37-.96-.58-.15-1.35-.24-2.32-.27v-1.73h12.24v1.73c-1.06.03-1.93.14-2.59.32-.64.15-1.14.45-1.5.91-.36.45-.61,1.11-.73,1.96-.12.85-.18,1.97-.18,3.37v27.21h-2.73Z"/><path d="M209.59,36.46c1.64,0,3-.09,4.1-.27,1.12-.21,2-.53,2.64-.96.67-.43,1.14-.97,1.41-1.64.3-.67.46-1.46.46-2.37h1.59v12.42h-1.59c0-.91-.14-1.7-.41-2.37-.24-.67-.7-1.21-1.36-1.64-.64-.46-1.52-.79-2.64-1-1.09-.24-2.49-.36-4.19-.36v10.28c0,1,.12,1.84.36,2.5.24.64.65,1.17,1.23,1.59.61.4,1.4.68,2.37.87.97.15,2.17.23,3.6.23,1.61,0,2.97-.11,4.1-.32,1.12-.24,2.06-.64,2.82-1.18.76-.55,1.37-1.26,1.82-2.14.46-.91.83-2.03,1.14-3.37h1.73l-.68,8.96h-28.26v-1.73c1.06-.03,1.91-.12,2.55-.27.67-.15,1.18-.41,1.55-.77s.61-.88.73-1.55c.12-.67.18-1.53.18-2.59v-21.21c0-1.06-.06-1.91-.18-2.55-.09-.67-.3-1.18-.64-1.55-.3-.39-.76-.65-1.37-.77-.61-.15-1.39-.26-2.37-.32v-1.73h26.3l.41,8.01h-1.59c-.18-1.21-.49-2.2-.91-2.96-.39-.79-.96-1.41-1.68-1.87-.7-.46-1.59-.77-2.68-.96-1.09-.18-2.41-.27-3.96-.27h-5.78c-.52,0-.77.26-.77.77v13.06Z"/><path d="M246.48,45.02h1.68c.21,1.36.61,2.59,1.18,3.68.61,1.09,1.35,2.02,2.23,2.78.91.76,1.94,1.35,3.09,1.77,1.18.39,2.46.59,3.82.59,2.24,0,4.02-.53,5.32-1.59,1.3-1.06,1.96-2.5,1.96-4.32,0-.76-.14-1.46-.41-2.09-.24-.64-.67-1.24-1.27-1.82-.61-.61-1.43-1.2-2.46-1.77-1-.58-2.27-1.2-3.82-1.87-1.88-.82-3.46-1.61-4.73-2.37-1.27-.76-2.29-1.55-3.05-2.37-.76-.82-1.3-1.68-1.64-2.59-.3-.94-.46-2-.46-3.18,0-1.4.24-2.68.73-3.87.52-1.18,1.23-2.2,2.14-3.05.91-.88,1.99-1.55,3.23-2,1.24-.48,2.61-.73,4.1-.73,1.33,0,2.58.21,3.73.64,1.15.42,2.32,1.11,3.5,2.05l1.18-2.05h1.05l.5,9.05h-1.68c-.73-2.49-1.79-4.34-3.18-5.55-1.37-1.21-3.02-1.82-4.96-1.82s-3.32.45-4.41,1.36c-1.09.91-1.64,2.14-1.64,3.68,0,.73.12,1.4.36,2,.24.58.64,1.14,1.18,1.68.55.52,1.26,1.05,2.14,1.59.88.52,1.97,1.06,3.28,1.64,2.24,1,4.11,1.94,5.6,2.82,1.49.85,2.67,1.71,3.55,2.59.88.85,1.5,1.76,1.87,2.73.36.94.55,2,.55,3.19,0,1.52-.3,2.91-.91,4.19-.61,1.27-1.46,2.37-2.55,3.28-1.09.91-2.4,1.62-3.91,2.14-1.52.49-3.18.73-5.01.73s-3.29-.24-4.69-.73c-1.37-.48-2.76-1.3-4.19-2.46l-1.27,2.23h-1.05l-.68-10.19Z"/><path d="M294.69,20.22c2.67,0,5.16.47,7.46,1.41,2.3.94,4.31,2.23,6.01,3.87,1.7,1.64,3.03,3.57,4.01,5.78.97,2.21,1.46,4.61,1.46,7.19s-.5,4.76-1.5,6.92c-.97,2.15-2.3,4.03-4,5.64-1.7,1.58-3.7,2.84-6.01,3.78-2.3.91-4.78,1.36-7.42,1.36s-5.11-.45-7.42-1.36c-2.31-.94-4.31-2.2-6.01-3.78-1.7-1.61-3.05-3.49-4.05-5.64-.97-2.15-1.46-4.46-1.46-6.92,0-2.58.49-4.98,1.46-7.19.97-2.21,2.31-4.14,4-5.78,1.7-1.64,3.7-2.93,6.01-3.87,2.3-.94,4.79-1.41,7.46-1.41ZM294.69,53.66c2,0,3.79-.35,5.37-1.05,1.61-.7,2.97-1.7,4.1-3,1.15-1.3,2.03-2.88,2.64-4.73.61-1.88.91-3.97.91-6.28,0-2.43-.3-4.61-.91-6.55-.61-1.97-1.47-3.64-2.59-5.01-1.12-1.39-2.49-2.46-4.1-3.18-1.61-.76-3.41-1.14-5.41-1.14s-3.81.38-5.42,1.14c-1.61.73-2.97,1.79-4.1,3.18-1.12,1.37-1.99,3.03-2.59,5.01-.61,1.94-.91,4.13-.91,6.55s.3,4.4.91,6.28c.61,1.85,1.47,3.43,2.59,4.73,1.12,1.3,2.49,2.31,4.1,3,1.61.7,3.41,1.05,5.42,1.05Z"/><path d="M348.55,41.6c0,2.4-.24,4.5-.73,6.32-.46,1.82-1.21,3.34-2.28,4.55-1.03,1.21-2.38,2.14-4.05,2.78-1.67.61-3.68.91-6.05.91-2.24,0-4.2-.21-5.87-.64-1.67-.45-3.06-1.18-4.19-2.18-1.12-1.03-1.96-2.37-2.5-4.01-.55-1.64-.82-3.65-.82-6.05v-12.01c0-2.24-.06-3.97-.18-5.19-.09-1.21-.39-2.11-.91-2.69-.36-.39-.86-.65-1.5-.77-.61-.15-1.43-.23-2.46-.23v-1.73h15.52v1.73c-1.03,0-1.87.06-2.5.18-.64.12-1.14.43-1.5.91-.43.55-.7,1.43-.82,2.64-.12,1.18-.18,2.9-.18,5.14v12.38c0,1.55.15,2.93.45,4.14.33,1.18.86,2.2,1.59,3.05.73.82,1.67,1.44,2.82,1.87,1.18.42,2.62.64,4.32.64,3.03,0,5.31-.83,6.83-2.5,1.52-1.7,2.27-4.19,2.27-7.46v-10.97c0-2.7-.11-4.75-.32-6.14-.21-1.4-.61-2.38-1.18-2.96-.42-.39-.96-.64-1.59-.73-.64-.12-1.43-.18-2.37-.18v-1.73h13.2v1.73c-.97,0-1.77.08-2.41.23-.61.15-1.09.48-1.46,1-.46.64-.76,1.64-.91,3-.15,1.33-.23,3.26-.23,5.78v9.19Z"/><path d="M387.2,55.71h-31.58v-.18l23.93-32.95h-12.47c-2.15,0-3.76.49-4.82,1.46-1.06.97-1.81,2.64-2.23,5.01h-1.68l.68-8.37h27.71v.18l-23.71,32.76h14.11c1.55,0,2.82-.11,3.82-.32,1-.24,1.8-.68,2.41-1.32.64-.64,1.12-1.5,1.46-2.59.36-1.12.68-2.58.96-4.37h1.96l-.55,10.69Z"/><path d="M412.11,43.01h-12.15c-.52,1.24-.96,2.35-1.32,3.32-.36.94-.67,1.76-.91,2.46-.21.7-.36,1.29-.45,1.77-.09.48-.14.88-.14,1.18,0,.85.27,1.44.82,1.78.55.3,1.46.45,2.73.45v1.73h-11.06v-1.73c.7-.09,1.29-.21,1.77-.36.52-.15.96-.36,1.32-.64.39-.27.73-.62,1-1.05.3-.45.59-1,.86-1.64l11.83-29.62h1.96l10.33,25.66c.7,1.7,1.31,3.06,1.82,4.1.51,1,1.02,1.76,1.5,2.28.49.51,1,.85,1.55,1,.58.15,1.26.23,2.05.23v1.77h-14.83v-1.77c1.61,0,2.71-.15,3.32-.46.61-.3.91-.8.91-1.5,0-.3-.02-.58-.05-.82-.03-.27-.09-.56-.18-.87-.06-.3-.17-.64-.32-1-.12-.39-.29-.85-.5-1.37l-1.87-4.92ZM400.87,40.74h10.38l-5.05-13.42-5.32,13.42Z"/></g><g><path d="M113.78,73.64c1.74,0,3.25.33,4.52.99,1.28.64,2.26,1.57,2.93,2.77.69,1.21,1.03,2.63,1.03,4.26s-.34,3.06-1.03,4.26c-.67,1.19-1.65,2.11-2.93,2.75-1.27.63-2.77.94-4.52.94h-4.97v-15.98h4.97ZM113.78,87.9c2.06,0,3.64-.54,4.72-1.63,1.09-1.1,1.63-2.64,1.63-4.61s-.55-3.54-1.65-4.65c-1.09-1.12-2.65-1.67-4.7-1.67h-2.89v12.56h2.89Z"/><path d="M131.91,75.34v5.34h5.82v1.72h-5.82v5.5h6.51v1.72h-8.6v-16h8.6v1.72h-6.51Z"/><path d="M151.45,89.78c-1.05,0-2-.18-2.84-.55-.82-.38-1.47-.9-1.95-1.56-.47-.67-.72-1.44-.73-2.32h2.22c.08.75.38,1.38.92,1.9.55.5,1.35.76,2.38.76s1.77-.24,2.34-.73c.58-.5.87-1.15.87-1.93,0-.61-.17-1.11-.5-1.49-.34-.38-.76-.67-1.26-.87-.5-.2-1.18-.41-2.04-.64-1.06-.27-1.9-.55-2.55-.83-.63-.27-1.17-.7-1.63-1.28-.44-.6-.66-1.39-.66-2.38,0-.87.22-1.64.66-2.32.44-.67,1.06-1.19,1.86-1.56.81-.37,1.73-.55,2.77-.55,1.5,0,2.72.37,3.67,1.12.96.75,1.51,1.74,1.63,2.98h-2.29c-.08-.61-.4-1.15-.96-1.61-.56-.47-1.31-.71-2.25-.71-.87,0-1.58.23-2.13.69-.55.44-.82,1.07-.82,1.88,0,.58.16,1.05.48,1.42.34.37.74.65,1.22.85.49.18,1.17.4,2.04.64,1.06.29,1.9.58,2.54.87.64.27,1.19.71,1.65,1.31.46.58.69,1.38.69,2.38,0,.78-.21,1.51-.62,2.2-.41.69-1.02,1.25-1.83,1.67-.81.43-1.76.64-2.87.64Z"/><path d="M166.74,73.64v15.98h-2.09v-15.98h2.09Z"/><path d="M187.21,78.27c-.44-.93-1.08-1.65-1.92-2.15-.84-.52-1.82-.78-2.93-.78s-2.12.26-3.03.78c-.89.5-1.59,1.24-2.11,2.2-.5.95-.76,2.05-.76,3.3s.25,2.35.76,3.3c.52.95,1.22,1.68,2.11,2.2.9.51,1.91.76,3.03.76,1.56,0,2.84-.47,3.85-1.4,1.01-.93,1.6-2.19,1.77-3.78h-6.37v-1.7h8.6v1.6c-.12,1.31-.53,2.52-1.24,3.62-.7,1.08-1.63,1.95-2.77,2.59-1.15.63-2.42.94-3.83.94-1.48,0-2.84-.34-4.06-1.03-1.22-.7-2.19-1.67-2.91-2.91-.7-1.24-1.05-2.64-1.05-4.2s.35-2.96,1.05-4.2c.72-1.25,1.69-2.22,2.91-2.91,1.22-.7,2.58-1.05,4.06-1.05,1.7,0,3.19.42,4.49,1.26,1.31.84,2.27,2.02,2.87,3.55h-2.5Z"/><path d="M210.33,89.62h-2.09l-8.39-12.72v12.72h-2.09v-16h2.09l8.39,12.7v-12.7h2.09v16Z"/><path d="M223.76,89.78c-1.05,0-2-.18-2.84-.55-.82-.38-1.47-.9-1.95-1.56-.47-.67-.72-1.44-.73-2.32h2.22c.08.75.38,1.38.92,1.9.55.5,1.35.76,2.38.76s1.77-.24,2.34-.73c.58-.5.87-1.15.87-1.93,0-.61-.17-1.11-.51-1.49-.34-.38-.76-.67-1.26-.87-.51-.2-1.18-.41-2.04-.64-1.05-.27-1.9-.55-2.54-.83-.63-.27-1.17-.7-1.63-1.28-.44-.6-.66-1.39-.66-2.38,0-.87.22-1.64.66-2.32.44-.67,1.06-1.19,1.86-1.56.81-.37,1.74-.55,2.77-.55,1.5,0,2.72.37,3.67,1.12.96.75,1.51,1.74,1.63,2.98h-2.29c-.08-.61-.4-1.15-.96-1.61-.57-.47-1.31-.71-2.25-.71-.87,0-1.58.23-2.13.69-.55.44-.82,1.07-.82,1.88,0,.58.16,1.05.48,1.42.34.37.74.65,1.21.85.49.18,1.17.4,2.04.64,1.05.29,1.9.58,2.54.87.64.27,1.19.71,1.65,1.31.46.58.69,1.38.69,2.38,0,.78-.21,1.51-.62,2.2-.41.69-1.02,1.25-1.83,1.67-.81.43-1.76.64-2.87.64Z"/></g><path d="M67,109H20c-11.03,0-20-8.97-20-20V20C0,8.97,8.97,0,20,0h47c11.03,0,20,8.97,20,20v69c0,11.03-8.97,20-20,20ZM20,2C10.08,2,2,10.07,2,20v69c0,9.92,8.08,18,18,18h47c9.92,0,18-8.08,18-18V20c0-9.92-8.08-18-18-18H20Z"/><path d="M51.89,50.34c-.52-.14-.95-.25-1.28-.32-.35-.09-.64-.16-.87-.19-.25-.05-.48-.09-.69-.1-.21-.01-.43-.02-.68-.01l-.37-.1.43-1.61.37.1c.23.13.47.25.71.36.21.1.48.2.8.32.32.1.72.22,1.19.36.47.13,1.1.29,1.87.5l16.12,4.32c.77.21,1.41.38,1.91.51.48.11.88.21,1.21.28.31.05.58.09.81.11.24.02.5.04.79.04l.37.1-.43,1.61-.37-.1c-.21-.12-.4-.23-.59-.32-.19-.09-.39-.18-.62-.25-.24-.09-.53-.18-.85-.27-.35-.11-.78-.23-1.3-.37l-18.51-4.96Z"/><path d="M50.64,41.11c-.21-.06-.39-.1-.52-.11-.14-.04-.26-.05-.36-.04-.11-.01-.2,0-.3.03-.09.03-.2.07-.31.13l-.15-.04.55-2.07.15.04c.08.11.16.2.25.28.08.07.18.15.3.21.13.05.28.11.47.18.19.05.44.12.76.2l6.51,1.74c.31.08.57.15.77.21.2.03.36.06.5.08.13,0,.25-.01.35-.04.1-.02.22-.07.35-.12l.15.04-.55,2.07-.15-.04c-.07-.11-.14-.2-.2-.27-.07-.07-.14-.13-.23-.17-.09-.06-.2-.11-.33-.14-.14-.05-.31-.11-.52-.17l-7.47-2Z"/><path d="M46.49,57.07c-.19-.05-.35-.08-.47-.1-.13-.03-.24-.04-.32-.03-.1,0-.19,0-.27.03-.09.03-.18.08-.28.14l-.14-.04.55-2.07.14.04c.07.11.14.2.22.27.07.07.16.14.26.2.11.05.25.1.42.17.17.05.4.11.68.18l5.86,1.57c.28.07.51.14.69.18.18.03.33.05.45.07.12,0,.22-.02.32-.05s.2-.07.33-.13l.14.04-.55,2.07-.14-.04c-.06-.1-.12-.19-.18-.26-.06-.07-.13-.12-.2-.16-.08-.06-.18-.1-.3-.13-.12-.05-.28-.1-.47-.15l-6.73-1.8Z"/><path d="M42.13,34.64c.11.69.21,1.5.28,2.45.08.94.11,2.07.11,3.37v15.2c.01.19.11.37.28.46.27.15.66.37.85.5v-16.15c-.01-1.3,0-2.43.05-3.37.07-.93.17-1.74.28-2.42,0-.02,0-.03,0-.05.15-.64.32-1.19.5-1.66.19-.47.41-.92.67-1.36v-.6h-4.16v.54c.26.43.49.89.67,1.36.19.51.34,1.09.45,1.74Z"/><path d="M47.76,65.83s-.04.05-.06.07c-1.12,1.16-2.47,1.83-4.05,2.01l-.06-3.75c0-.36-.18-.69-.48-.89-.25-.17-.51-.35-.77-.51,0,.02,0,.03,0,.05-.04,1.02-.05,1.59-.16,2.32-.11.76-.26,1.4-.45,1.9-.19.51-.43.98-.73,1.41v.54h2.64c2.1,0,3.91-.64,5.43-1.91h0c-.47-.39-.92-.8-1.31-1.26Z"/><path d="M71.33,65.15c-.19-.47-.34-1.03-.45-1.69-.11-.65-.21-1.43-.28-2.34-.08-.87-.11-.94-.11-2.21v-2.36c-.05-.02-1.11-.44-1.12-.45v2.75c0,1.27-.04,1.36-.11,2.26-.08.91-.17,1.68-.28,2.34-.11.65-.26,1.21-.45,1.69-.19.47-.41.91-.67,1.3v.54h4.16v-.54c-.26-.4-.49-.83-.67-1.3Z"/><path d="M69.36,52.92c.38.09.75.2,1.12.31v-22.22h-1.12c-1.99,0-3.71.51-5.18,1.52-1.43,1.02-2.68,2.36-3.77,4.02-1.09,1.67-2.04,3.57-2.87,5.71-.83,2.17-1.59,4.39-2.31,6.63-.71,2.28-1.42,4.51-2.14,6.69-.63,2.07-1.36,3.92-2.19,5.57.7.46,1.35,1,1.99,1.54.95-1.51,1.81-3.21,2.57-5.1.86-2.14,1.67-4.35,2.42-6.63.79-2.25,1.56-4.48,2.31-6.69.75-2.17,1.56-4.15,2.42-5.93.9-1.74,1.89-3.17,2.98-4.3,1.09-1.12,2.34-1.76,3.77-1.9v20.77Z"/><path d="M55.63,74.41c-.06-.11-.67-1.43-.77-1.69-1.19.09-1.52.15-3,.17h-16.66v-12.11c0-.47-.25-.9-.66-1.13l-.68-.39c-.93-.53-1.81-1.12-2.71-1.7v10.51c0,.97-.05,1.78-.15,2.45-.05.61-.15,1.15-.31,1.6-.15.46-.38.97-.69,1.53v.76h25.63s0,0,0,0Z"/><path d="M64.31,69.76c-.71,1.02-1.51,1.78-3.45,2.29-.29.08-.62.15-.96.22.01.02.02.04.03.06.13.22.22.46.32.7.09.23.11.49.13.73.01.23-.04.45-.14.66h4.75v-4.66h-.69Z"/><path d="M58.9,72.59c-.9-2.72-2.4-5.13-4.48-7.21-2.11-2.15-4.66-4.07-7.63-5.76-2.97-1.69-6.02-3.33-9.13-4.9-3.65-1.83-6.55-3.37-9.22-4.84-2.97-1.69-5.51-3.56-7.6-5.6-2.14-2.05-3.68-4.39-4.61-7.01-.93-2.62-.93-5.68,0-9.18.46-1.72,1.16-3.35,2.1-4.9.9-1.6,2.09-2.97,3.55-4.11,1.97-1.64,4.21-2.72,6.73-3.26,2.52-.54,5.04-.6,7.57-.19,2.53.41,4.95,1.3,7.28,2.66,2.33,1.36,4.28,3.12,5.86,5.29,1.53,2.15,2.6,4.68,3.19,7.58.44,2.23.42,4.57-.06,7.18-.04.24.1.46.33.53.33.1.64.22.96.36.59-2.88.72-5.57.34-8.04-.43-2.91-1.33-5.47-2.69-7.68-1.4-2.27-3.13-4.19-5.19-5.74-2.11-1.57-4.39-2.73-6.82-3.49-2.42-.81-4.89-1.15-7.4-1.03-2.55.06-4.93.6-7.16,1.64-2.27.98-4.25,2.47-5.95,4.5-1.75,2.01-3.04,4.56-3.87,7.66-1.11,4.13-1.27,7.78-.48,10.95.8,3.11,2.22,5.9,4.25,8.34,2,2.38,4.46,4.52,7.38,6.41,2.87,1.88,5.88,3.66,9.01,5.34,3.1,1.62,6.16,3.21,9.17,4.75,3.02,1.55,5.62,3.22,7.83,5.03,2.17,1.74,3.78,3.7,4.83,5.88,1.06,2.13,1.22,4.6.47,7.4-.53,1.97-1.46,3.59-2.81,4.86-1.39,1.26-2.99,2.21-4.79,2.83-1.84.56-3.8.8-5.89.72-2.09-.08-4.09-.49-6-1.21-1.97-.74-3.77-1.77-5.42-3.11-1.63-1.39-2.92-3.08-3.86-5.07l-1.19.31c1.03,2.86,2.4,5.31,4.12,7.36,1.68,1.98,3.56,3.54,5.63,4.67,2.07,1.14,4.21,1.81,6.42,2.04,2.16.21,4.22-.11,6.19-.95,1.97-.84,3.75-2.19,5.35-4.03,1.57-1.9,2.75-4.35,3.55-7.35.99-3.69,1.03-6.9.12-9.62Z"/><path d="M69.76,74.79l-.12-.92c-.15-1.14-1.05-2.03-2.18-2.18l-.92-.12.92-.12c1.14-.15,2.03-1.05,2.18-2.18l.12-.92.12.92c.15,1.14,1.05,2.03,2.18,2.18l.92.12-.92.12c-1.14.15-2.03,1.05-2.18,2.18l-.12.92Z"/><path d="M52.22,48.42l-.12-.92c-.15-1.14-1.05-2.03-2.18-2.18l-.92-.12.92-.12c1.14-.15,2.03-1.05,2.18-2.18l.12-.92.12.92c.15,1.14,1.05,2.03,2.18,2.18l.92.12-.92.12c-1.14.15-2.03,1.05-2.18,2.18l-.12.92Z"/></svg>
-  </a>
-  <ul class="nav-links">
-    <li><a href="#sobre">Sobre</a></li>
-    <li><a href="#servicos">Serviços</a></li>
-    <li><a href="#portfolio">Portfólio</a></li>
-    <li><a href="#depoimentos">Depoimentos</a></li>
-    <li><a href="#cta">Contato</a></li>
-  </ul>
-</nav>
+/* Nav logo — SVG inline */
+.nav-logo {
+  display:flex; align-items:center; text-decoration:none;
+  flex-shrink:0;
+}
+.nav-logo-svg {
+  height:40px; width:auto;
+  fill:var(--cream);
+  transition:fill .3s, opacity .3s;
+  opacity:.92;
+}
+.nav-logo:hover .nav-logo-svg { opacity:1; }
 
-<!-- ══ HERO ══ -->
-<section id="hero">
-  <div class="hero-bg-img"></div>
-  <canvas id="hero-canvas"></canvas>
-  <div class="hero-grad"></div>
-  <div class="hero-content">
-    <p class="hero-eyebrow">Identidade Visual · Design Estratégico</p>
-    <h1 class="hero-title">
-      <span class="ln"><span class="ln-inner">Conquiste a confiança</span></span>
-      <span class="ln"><span class="ln-inner">dos seus clientes.</span></span>
-    </h1>
-    <p class="hero-sub">Design que transforma negócios em marcas inesquecíveis</p>
-    <div class="hero-cta">
-      <a href="#servicos" class="btn-primary"><span>Explorar serviços</span></a>
-      <a href="#portfolio" class="btn-ghost">Ver portfólio →</a>
-    </div>
-  </div>
-  <div class="scroll-hint">
-    <span>Scroll</span>
-    <div class="scroll-bar"></div>
-  </div>
-</section>
+.nav-links { display:flex; gap:40px; list-style:none; }
+.nav-links a {
+  font-size:.88rem; letter-spacing:.2em; text-transform:uppercase;
+  color:rgba(240,235,227,.6); text-decoration:none; font-weight:300;
+  transition:color .3s;
+}
+.nav-links a:hover { color:var(--terra); }
 
-<!-- ══ MARQUEE ══ -->
-<div class="marquee-wrap">
-  <div class="marquee-track">
-    <span class="m-item">Identidade Visual Completa</span>
-    <span class="m-item">Branding Estratégico</span>
-    <span class="m-item">Design para Casamentos</span>
-    <span class="m-item">Logotipo Profissional</span>
-    <span class="m-item">Presença de Marca</span>
-    <span class="m-item">Identidade Visual Completa</span>
-    <span class="m-item">Branding Estratégico</span>
-    <span class="m-item">Design para Casamentos</span>
-    <span class="m-item">Logotipo Profissional</span>
-    <span class="m-item">Presença de Marca</span>
-  </div>
-</div>
 
-<!-- ══ SOBRE ══ -->
-<section id="sobre">
-  <div class="sobre-grid">
-    <div class="rev-l">
-      <p class="tag">Sobre a designer</p>
-      <h2 class="sobre-h">Design com <em>propósito</em><br>e estratégia.</h2>
-      <p class="sobre-p">Sou Line Souza, arquiteta e designer gráfico. Crio identidades visuais para empreendedores que desejam se posicionar com clareza e conquistar confiança no primeiro contato.</p>
-      <p class="sobre-p">Minha abordagem combina criatividade, estratégia e atenção aos detalhes — traduzindo a essência de cada negócio em soluções visuais que encantam e inspiram.</p>
-      <div class="sobre-stats">
-        <div><div class="stat-n">3+</div><div class="stat-l">Anos de experiência</div></div>
-        <div><div class="stat-n">4+</div><div class="stat-l">Estados atendidos</div></div>
-        <div><div class="stat-n">100%</div><div class="stat-l">Comprometimento</div></div>
-        <div><div class="stat-n">∞</div><div class="stat-l">Cuidado com o detalhe</div></div>
-      </div>
-    </div>
-    <div class="rev d2">
-      <div class="sobre-photo-wrap">
-        <img class="sobre-photo"
-          src="https://static.wixstatic.com/media/b26ec7_49a374b9780a4678b373d3b71c8563ab~mv2.jpg"
-          alt="Line Souza — Designer" loading="lazy">
-        <div class="sobre-caption">
-          <div class="sobre-name">Line Souza</div>
-          <div class="sobre-role">Arquiteta &amp; Designer Gráfico</div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
 
-<!-- ══ SERVIÇOS ══ -->
-<section id="servicos">
-  <div class="serv-head rev">
-    <div>
-      <p class="tag" style="color:var(--terra)">O que oferecemos</p>
-      <h2 class="serv-h">Serviços que <em>transformam</em><br>a sua presença.</h2>
-    </div>
-    <p class="serv-aside">Cada projeto é construído com intenção estratégica e sensibilidade estética refinada.</p>
-  </div>
-  <div class="serv-grid">
-    <div class="card rev d1">
-      <div class="card-num">01</div>
-      <div class="card-ico"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M4.22 4.22l2.12 2.12M17.66 17.66l2.12 2.12M2 12h3M19 12h3M4.22 19.78l2.12-2.12M17.66 6.34l2.12-2.12"/></svg></div>
-      <h3 class="card-name">Elevare<br><small>Identidade Visual Completa</small></h3>
-      <p class="card-desc">Um sistema robusto para posicionar sua marca com autoridade e consistência em todos os pontos de contato.</p>
-      <ul class="card-list">
-        <li>Logotipo profissional + variações</li>
-        <li>DNA da marca, círculo de ouro, arquétipos e tom de voz</li>
-        <li>Paleta de cores e tipografia</li>
-        <li>Manual de Marca, aplicações e mockups</li>
-        <li>Arquivos editáveis e finais</li>
-      </ul>
-      <a href="https://wa.me/559391522691?text=Ol%C3%A1%2C%20vim%20pelo%20site!%20Gostaria%20de%20fazer%20um%20or%C3%A7amento!" class="card-cta" target="_blank">Solicitar proposta →</a>
-    </div>
-    <div class="card rev d2">
-      <div class="card-num">02</div>
-      <div class="card-ico"><svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg></div>
-      <h3 class="card-name">Aurum<br><small>Identidade Visual Básica</small></h3>
-      <p class="card-desc">A solução ideal para quem está começando e precisa de uma identidade profissional que transmita confiança.</p>
-      <ul class="card-list">
-        <li>Logotipo com até 2 propostas</li>
-        <li>Versões colorido, PB e horizontal</li>
-        <li>Paleta de cores definida</li>
-        <li>Tipografia selecionada</li>
-        <li>Arquivos PNG, PDF e editável</li>
-      </ul>
-      <a href="https://wa.me/559391522691?text=Ol%C3%A1%2C%20vim%20pelo%20site!%20Gostaria%20de%20fazer%20um%20or%C3%A7amento!" class="card-cta" target="_blank">Solicitar proposta →</a>
-    </div>
-    <div class="card wed rev d3">
-      <div class="card-num">03</div>
-      <div class="card-ico"><svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg></div>
-      <h3 class="card-name">Lunare<br><small>Identidade Visual Casamento</small></h3>
-      <p class="card-desc">Design delicado e exclusivo para o dia mais especial. Uma identidade que conta a história do casal com elegância.</p>
-      <ul class="card-list">
-        <li>Monograma do casal</li>
-        <li>Convites e papelaria</li>
-        <li>Identidade para redes sociais</li>
-        <li>Personalização completa</li>
-        <li>Entrega antes do grande dia</li>
-      </ul>
-      <a href="https://wa.me/559391522691?text=Ol%C3%A1%2C%20vim%20pelo%20site!%20Gostaria%20de%20fazer%20um%20or%C3%A7amento!" class="card-cta" target="_blank">Solicitar proposta →</a>
-    </div>
-  </div>
-</section>
+/* ─────────────────────────────────────────────── HERO */
+#hero {
+  position:relative; height:100vh; overflow:hidden;
+  display:flex; align-items:center; justify-content:center;
+}
 
-<!-- ══ PORTFOLIO ══ -->
-<section id="portfolio">
-  <div class="porto-head rev">
-    <p class="tag">Trabalhos selecionados</p>
-    <h2 class="porto-h">Marcas que <em>criamos</em><br>com propósito.</h2>
-    <div class="filters">
-      <button class="f-btn on" data-f="all">Todos</button>
-      <button class="f-btn" data-f="completo">Identidade Completa</button>
-      <button class="f-btn" data-f="basico">Logotipo</button>
-    </div>
-  </div>
-  <div class="porto-masonry">
-    <div class="pi rev d1" data-cat="completo">
-      <img src="https://static.wixstatic.com/media/b26ec7_4b53790e85044c5e93a840399c7502f8~mv2.png/v1/fill/w_680,h_672,al_c,q_90,usm_0.66_1.00_0.01,enc_avif,quality_auto/b26ec7_4b53790e85044c5e93a840399c7502f8~mv2.png" alt="Modesta e Graciosa" loading="lazy">
-      <div class="pi-over"><div><div class="pi-client">Modesta e Graciosa</div><div class="pi-type">Identidade Visual</div></div></div>
-    </div>
-    <div class="pi rev d2" data-cat="completo">
-      <img src="https://static.wixstatic.com/media/b26ec7_ce3f0045b9744aceb2e06db5f271534f~mv2.png/v1/fill/w_680,h_672,al_c,q_90,usm_0.66_1.00_0.01,enc_avif,quality_auto/b26ec7_ce3f0045b9744aceb2e06db5f271534f~mv2.png" alt="Plenza Engenharia" loading="lazy">
-      <div class="pi-over"><div><div class="pi-client">Plenza</div><div class="pi-type">Identidade Completa</div></div></div>
-    </div>
-    <div class="pi rev d1" data-cat="completo">
-      <img src="https://static.wixstatic.com/media/b26ec7_fb061b44f19c49b5b4a806471e3b8115~mv2.png/v1/fill/w_680,h_672,al_c,q_90,usm_0.66_1.00_0.01,enc_avif,quality_auto/b26ec7_fb061b44f19c49b5b4a806471e3b8115~mv2.png" alt="Anny's Estúdio de Beleza" loading="lazy">
-      <div class="pi-over"><div><div class="pi-client">Anny's Estúdio de Beleza</div><div class="pi-type">Identidade Completa · Beleza</div></div></div>
-    </div>
-    <div class="pi rev d2" data-cat="basico">
-      <img src="https://static.wixstatic.com/media/b26ec7_fa88c68f15dc424b80c3e83949797a57~mv2.png/v1/fill/w_680,h_672,al_c,q_90,usm_0.66_1.00_0.01,enc_avif,quality_auto/b26ec7_fa88c68f15dc424b80c3e83949797a57~mv2.png" alt="Dulces Avispitas" loading="lazy">
-      <div class="pi-over"><div><div class="pi-client">Dulces Avispitas</div><div class="pi-type">Logotipo · Confeitaria</div></div></div>
-    </div>
-    <div class="pi rev d3" data-cat="completo">
-      <img src="https://static.wixstatic.com/media/b26ec7_7013bf8d6c27433fa6935c9e8f50f820~mv2.png/v1/fill/w_680,h_672,al_c,q_90,usm_0.66_1.00_0.01,enc_avif,quality_auto/b26ec7_7013bf8d6c27433fa6935c9e8f50f820~mv2.png" alt="Elaine Martins Dias" loading="lazy">
-      <div class="pi-over"><div><div class="pi-client">Elaine Martins Dias</div><div class="pi-type">Identidade Completa · Engenharia</div></div></div>
-    </div>
-    <div class="pi rev d1" data-cat="basico">
-      <img src="https://static.wixstatic.com/media/b26ec7_ee2f868062854d49a6a3d8b0d7a2151f~mv2.png/v1/fill/w_680,h_672,al_c,q_90,usm_0.66_1.00_0.01,enc_avif,quality_auto/b26ec7_ee2f868062854d49a6a3d8b0d7a2151f~mv2.png" alt="Gladiator Digital" loading="lazy">
-      <div class="pi-over"><div><div class="pi-client">Gladiator Digital</div><div class="pi-type">Logotipo · Marca</div></div></div>
-    </div>
-    <div class="pi rev d2" data-cat="completo">
-      <img src="https://i.imgur.com/RDwMQ2W.png" alt="Altas Horas" loading="lazy">
-      <div class="pi-over"><div><div class="pi-client">Altas Horas</div><div class="pi-type">Identidade Completa</div></div></div>
-    </div>
-    <div class="pi rev d3" data-cat="basico">
-      <img src="https://static.wixstatic.com/media/b26ec7_0d31302e9ac142dda311d52fc0c1d83c~mv2.jpeg/v1/fill/w_680,h_672,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/b26ec7_0d31302e9ac142dda311d52fc0c1d83c~mv2.jpeg" alt="Skin & Care" loading="lazy">
-      <div class="pi-over"><div><div class="pi-client">Skin &amp; Care</div><div class="pi-type">Logotipo · Marca</div></div></div>
-    </div>
-    <div class="pi rev d1" data-cat="completo">
-      <img src="https://static.wixstatic.com/media/b26ec7_1e6a727869ae486f953f78c31fccd332~mv2.png/v1/fill/w_680,h_672,al_c,q_90,usm_0.66_1.00_0.01,enc_avif,quality_auto/b26ec7_1e6a727869ae486f953f78c31fccd332~mv2.png" alt="Portfólio" loading="lazy">
-      <div class="pi-over"><div><div class="pi-client">Identidade Visual</div><div class="pi-type">Identidade Completa</div></div></div>
-    </div>
-  </div>
-</section>
+#hero-canvas {
+  position:absolute; inset:0; width:100%; height:100%; z-index:1;
+}
 
-<!-- ══ PROCESSO ══ -->
-<section id="processo">
-  <div class="proc-grid">
-    <div class="rev-l">
-      <p class="tag" style="color:var(--terra)">Como funciona</p>
-      <h2 class="proc-h">Cada detalhe é<br><em>pensado com cuidado.</em></h2>
-      <p class="proc-p">Do briefing à entrega final, acompanho você em cada etapa. Processo transparente, colaborativo e orientado a resultados reais para o seu negócio.</p>
-    </div>
-    <div class="proc-steps rev d2">
-      <div class="step"><div class="step-n">01</div><div><div class="step-title">Briefing &amp; Imersão</div><div class="step-desc">Entendemos seu negócio, público-alvo, valores e objetivos antes de iniciar qualquer criação.</div></div></div>
-      <div class="step"><div class="step-n">02</div><div><div class="step-title">Conceito &amp; Estratégia</div><div class="step-desc">Desenvolvemos a direção criativa com base nas informações coletadas, garantindo propósito real.</div></div></div>
-      <div class="step"><div class="step-n">03</div><div><div class="step-title">Criação &amp; Apresentação</div><div class="step-desc">Apresentamos as propostas visuais com justificativas claras e espaço para feedback.</div></div></div>
-      <div class="step"><div class="step-n">04</div><div><div class="step-title">Refinamento</div><div class="step-desc">Refinamos os detalhes com base no seu retorno até alcançar o resultado ideal.</div></div></div>
-      <div class="step"><div class="step-n">05</div><div><div class="step-title">Entrega Final</div><div class="step-desc">Todos os arquivos organizados via Google Drive, prontos para uso em qualquer aplicação.</div></div></div>
-    </div>
-  </div>
-</section>
+.hero-bg-img {
+  position:absolute; inset:0; z-index:0;
+  background: url('https://static.wixstatic.com/media/b26ec7_13b61723064c4a6d909860f860efb319~mv2.jpg') center/cover no-repeat;
+  opacity:.18;
+  filter: saturate(.55) brightness(.65);
+}
 
-<!-- ══ DEPOIMENTOS ══ -->
-<section id="depoimentos">
-  <div class="dep-head rev">
-    <div>
-      <p class="tag">O que dizem sobre nós</p>
-      <h2 class="dep-h">Clientes que <em>confiam</em><br>no nosso trabalho.</h2>
-    </div>
-    <div class="dep-rating-avg">
-      <div class="dep-avg-num">5.0</div>
-      <div class="dep-avg-stars">
-        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-      </div>
-      <div class="dep-avg-label">Avaliação via Google Maps</div>
-    </div>
-  </div>
-  <div class="dep-slider-wrap">
-    <div class="dep-track">
-      <div class="dep-card rev d1">
-        <div class="dep-stars">
-          <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-          <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-          <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-          <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-          <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-        </div>
-        <p class="dep-quote">Foi muito atenciosa e tivemos resultados incríveis. Superou e muito minhas expectativas!</p>
-        <div class="dep-divider"></div>
-        <div class="dep-author">
-          <div class="dep-avatar">K</div>
-          <div><div class="dep-name">Kaique Rogers Aguilar Santos</div><div class="dep-source">Altas Horas Fleming · Bar &amp; Restaurante</div></div>
-        </div>
-        <div class="dep-badge"><svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>Avaliação via Google Maps</div>
-      </div>
-      <div class="dep-card rev d2">
-        <div class="dep-stars">
-          <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-          <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-          <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-          <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-          <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-        </div>
-        <p class="dep-quote">O projeto ficou magnífico! Uma profissional excelente, com um atendimento maravilhoso. Ela entrega exatamente o que você pede — e ainda melhor. Recomendo de olhos fechados.</p>
-        <div class="dep-divider"></div>
-        <div class="dep-author">
-          <div class="dep-avatar">A</div>
-          <div><div class="dep-name">Alyf Molinari Chiabotto</div><div class="dep-source">Gladiator Digital · Design &amp; Tecnologia</div></div>
-        </div>
-        <div class="dep-badge"><svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>Avaliação via Google Maps</div>
-      </div>
-      <div class="dep-card rev d3">
-        <div class="dep-stars">
-          <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-          <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-          <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-          <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-          <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-        </div>
-        <p class="dep-quote">Atendimento perfeito, maravilhoso o trabalho, super indico. Fez tudo muito bem do jeito que pedi.</p>
-        <div class="dep-divider"></div>
-        <div class="dep-author">
-          <div class="dep-avatar">S</div>
-          <div><div class="dep-name">Silvana Garcia Mota</div><div class="dep-source">Manicure &amp; Pedicure · Santarém, PA</div></div>
-        </div>
-        <div class="dep-badge"><svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>Avaliação via Google Maps</div>
-      </div>
-    </div>
-  </div>
-</section>
+.hero-grad {
+  position:absolute; inset:0; z-index:2;
+  background:
+    radial-gradient(ellipse 75% 75% at 22% 55%, rgba(175,87,18,.12) 0%, transparent 55%),
+    radial-gradient(ellipse 50% 50% at 78% 28%, rgba(91,51,21,.16) 0%, transparent 50%),
+    linear-gradient(165deg, rgba(44,21,8,.78) 0%, rgba(12,5,2,.88) 55%, rgba(32,13,5,.82) 100%);
+}
 
-<!-- ══ PARA QUEM É ══ -->
-<section id="paraquem">
-  <div class="pq-inner rev">
-    <div class="pq-col">
-      <p class="tag">Identidade visual</p>
-      <h2 class="pq-h">A Identidade Visual<br><em>é para:</em></h2>
-      <ul class="pq-list pq-yes">
-        <li>
-          <span class="pq-icon pq-icon-yes"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M8 12l3 3 5-5"/></svg></span>
-          Todos que trabalham com qualquer tipo de serviço ou produto.
-        </li>
-        <li>
-          <span class="pq-icon pq-icon-yes"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M8 12l3 3 5-5"/></svg></span>
-          Quem deseja ter tranquilidade na rotina, sabendo que uma profissional está pensando em uma estratégia visual a curto, médio e longo prazo, levando em conta seus objetivos para o negócio.
-        </li>
-        <li>
-          <span class="pq-icon pq-icon-yes"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M8 12l3 3 5-5"/></svg></span>
-          Quem nunca teve uma identidade visual ou quem já tem e precisa repaginar a atual.
-        </li>
-        <li>
-          <span class="pq-icon pq-icon-yes"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M8 12l3 3 5-5"/></svg></span>
-          Quem não tem clareza da mensagem que quer passar, mas sabe que precisa de uma e quer investir um tempo para descobrir.
-        </li>
-        <li>
-          <span class="pq-icon pq-icon-yes"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M8 12l3 3 5-5"/></svg></span>
-          Quem deseja aumentar a percepção de valor do seu produto/serviço e cobrar mais caro por isso.
-        </li>
-      </ul>
-    </div>
-    <div class="pq-col rev d2">
-      <h2 class="pq-h pq-h-no">A Identidade Visual<br><em class="pq-em-no">não é para:</em></h2>
-      <ul class="pq-list pq-no">
-        <li>
-          <span class="pq-icon pq-icon-no"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M15 9l-6 6M9 9l6 6"/></svg></span>
-          Quem acredita que um "logotipo" é suficiente.
-        </li>
-        <li>
-          <span class="pq-icon pq-icon-no"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M15 9l-6 6M9 9l6 6"/></svg></span>
-          Quem busca uma solução rápida e econômica.
-        </li>
-        <li>
-          <span class="pq-icon pq-icon-no"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M15 9l-6 6M9 9l6 6"/></svg></span>
-          Quem não reconhece a importância de um design bem elaborado.
-        </li>
-        <li>
-          <span class="pq-icon pq-icon-no"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M15 9l-6 6M9 9l6 6"/></svg></span>
-          Quem não está disposto a investir no crescimento e valorização da sua marca.
-        </li>
-        <li>
-          <span class="pq-icon pq-icon-no"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M15 9l-6 6M9 9l6 6"/></svg></span>
-          Quem não vê valor em uma estratégia visual bem planejada.
-        </li>
-      </ul>
-      <a href="https://form.respondi.app/Lnn6Lnos" class="btn-primary pq-btn" target="_blank"><span>Crie sua identidade</span></a>
-    </div>
-  </div>
-</section>
+.hero-content {
+  position:relative; z-index:3;
+  text-align:center; padding:0 24px;
+}
 
-<!-- ══ FAQ ══ -->
-<section id="faq">
-  <div class="faq-inner rev">
-    <div class="faq-head">
-      <p class="tag">Dúvidas</p>
-      <h2 class="faq-h">Perguntas <em>frequentes</em></h2>
-    </div>
-    <div class="faq-list">
-      <div class="faq-item">
-        <button class="faq-q" aria-expanded="false">
-          <span>Qual é o custo para criar uma identidade visual completa?</span>
-          <svg class="faq-arrow" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg>
-        </button>
-        <div class="faq-a">
-          <p>Tudo depende do tamanho do projeto, os entregáveis envolvidos e complexidade. O custo pode variar dependendo das necessidades específicas de cada projeto, incluindo a complexidade do design, a quantidade de materiais gráficos necessários e outros fatores. Para um orçamento personalizado, entre em contato no botão de orçamento para receber uma proposta.</p>
-        </div>
-      </div>
-      <div class="faq-item">
-        <button class="faq-q" aria-expanded="false">
-          <span>O que eu recebo ao contratar o seu serviço?</span>
-          <svg class="faq-arrow" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg>
-        </button>
-        <div class="faq-a">
-          <p>Você recebe uma estrutura completa de identidade visual, começando pela estratégia de marca, que inclui: análise de concorrentes com seus pontos fortes e fracos, círculo dourado (golden circle), definição de missão, visão e valores, personalidade da marca, DNA da marca e criação de um diferencial para tornar sua marca essencial para seu público-alvo.</p>
-          <p>Sobre o design, está incluso: criação de logotipo e suas variações, paleta de cores, tipografia, elementos de apoio, aplicação desses elementos em diferentes materiais, como cartões de visita, papel timbrado e mídias sociais, conforme sua demanda. Também fornecemos o Manual de Identidade Visual (MIV), padrão fotográfico, arquivos em PDF, PNG, JPG e formatos editáveis.</p>
-        </div>
-      </div>
-      <div class="faq-item">
-        <button class="faq-q" aria-expanded="false">
-          <span>Posso pedir revisões durante o processo de criação?</span>
-          <svg class="faq-arrow" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg>
-        </button>
-        <div class="faq-a">
-          <p>Sim, nosso processo de projeto é feito em etapas justamente para que você participe do início ao final. E oferecemos revisões durante o processo de criação para garantir que a identidade visual atenda às suas expectativas e necessidades. Detalharemos o número de revisões incluídas no contrato.</p>
-        </div>
-      </div>
-      <div class="faq-item">
-        <button class="faq-q" aria-expanded="false">
-          <span>Vocês oferecem suporte após a conclusão do projeto?</span>
-          <svg class="faq-arrow" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg>
-        </button>
-        <div class="faq-a">
-          <p>Sim, oferecemos suporte após a conclusão do projeto para qualquer dúvida ou reenvio de materiais. Estamos comprometidos em garantir que você esteja completamente satisfeito com sua nova identidade visual.</p>
-        </div>
-      </div>
-      <div class="faq-item">
-        <button class="faq-q" aria-expanded="false">
-          <span>Vocês podem atualizar ou redesenhar minha identidade visual existente?</span>
-          <svg class="faq-arrow" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg>
-        </button>
-        <div class="faq-a">
-          <p>Sim, podemos atualizar ou redesenhar sua identidade visual existente para garantir que ela continue relevante e eficaz para sua marca.</p>
-        </div>
-      </div>
-      <div class="faq-item">
-        <button class="faq-q" aria-expanded="false">
-          <span>Como o processo de criação da identidade visual começa?</span>
-          <svg class="faq-arrow" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg>
-        </button>
-        <div class="faq-a">
-          <p>O processo começa com uma fase de imersão, onde discutimos seus objetivos, valores da marca, público-alvo e desenvolvemos um plano estratégico. E então começamos o processo de design.</p>
-        </div>
-      </div>
-      <div class="faq-item">
-        <button class="faq-q" aria-expanded="false">
-          <span>Vocês oferecem serviços de materiais impressos?</span>
-          <svg class="faq-arrow" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg>
-        </button>
-        <div class="faq-a">
-          <p>Criação e design de materiais para papelaria como cartões, papel timbrado, pasta e afins podem sim ser contratados de forma avulsa, entre em contato pelo direct do instagram ou WhatsApp para mais detalhes.</p>
-        </div>
-      </div>
-      <div class="faq-item">
-        <button class="faq-q" aria-expanded="false">
-          <span>Como posso garantir que minha nova identidade visual seja consistente em todos os materiais de marketing?</span>
-          <svg class="faq-arrow" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg>
-        </button>
-        <div class="faq-a">
-          <p>Fornecemos um manual de identidade visual (MIV) que detalha as diretrizes de uso de todos os elementos gráficos, garantindo consistência em todos os materiais de marketing e comunicação.</p>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
+.hero-eyebrow {
+  font-size:.82rem; letter-spacing:.55em; text-transform:uppercase;
+  color:var(--terra); font-weight:400;
+  opacity:0; transform:translateY(18px);
+  animation:fadeUp .8s .35s ease forwards;
+  margin-bottom:36px;
+  display:flex; align-items:center; justify-content:center; gap:16px;
+}
+.hero-eyebrow::before,
+.hero-eyebrow::after { content:''; display:block; width:32px; height:1px; background:var(--terra); }
 
-<!-- ══ CTA ══ -->
-<section id="cta">
-  <div class="cta-inner rev">
-    <p class="tag" style="justify-content:center;">Vamos conversar?</p>
-    <h2 class="cta-h">Sua marca está<br><em>pronta para brilhar.</em></h2>
-    <p class="cta-sub">Entre em contato e descubra como criar uma identidade visual que conquiste seus clientes desde o primeiro olhar.</p>
-    <div class="cta-btns">
-      <a href="https://wa.me/559391522691?text=Ol%C3%A1%2C%20vim%20pelo%20site!%20Gostaria%20de%20fazer%20um%20or%C3%A7amento!" class="btn-wpp" target="_blank">
-        <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
-        <span>Falar pelo WhatsApp</span>
-      </a>
-      <a href="https://www.instagram.com/linesouzadesigner" class="btn-ig" target="_blank">Ver no Instagram ↗</a>
-    </div>
-  </div>
-</section>
+/* 2 linhas */
+.hero-title {
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(4rem, 9vw, 9.5rem);
+  font-weight:300; line-height:.92;
+  color:var(--cream); letter-spacing:-.02em;
+}
+.hero-title .ln { display:block; overflow:hidden; }
+.hero-title .ln-inner {
+  display:block;
+  transform:translateY(105%);
+  animation:slideUp .9s ease forwards;
+}
+.hero-title .ln:nth-child(1) .ln-inner { animation-delay:.48s; }
+.hero-title .ln:nth-child(2) .ln-inner { animation-delay:.64s; font-style:italic; color:var(--terra-light); }
 
-<!-- ══ FOOTER ══ -->
-<footer>
-  <a href="#" class="foot-logo-link">
-    <svg class="foot-logo-svg" viewBox="0 0 425.63 109" xmlns="http://www.w3.org/2000/svg" aria-label="Line Souza Designs"><g><path d="M136.19,55.71h-29.4v-1.73c1.06-.03,1.91-.12,2.55-.27.67-.15,1.18-.41,1.55-.77.36-.36.61-.88.73-1.55.12-.67.18-1.53.18-2.59v-21.21c0-1.06-.06-1.91-.18-2.55-.09-.67-.3-1.18-.64-1.55-.3-.39-.76-.65-1.37-.77-.61-.15-1.4-.26-2.37-.32v-1.73h13.83v1.73c-.97.03-1.76.12-2.37.27-.58.15-1.03.43-1.36.82-.3.39-.52.94-.64,1.64-.09.7-.14,1.62-.14,2.78v19.61c0,1.27.12,2.32.36,3.14.27.79.71,1.41,1.32,1.87.64.42,1.47.73,2.5.91,1.03.15,2.34.23,3.91.23,1.73,0,3.18-.09,4.37-.27,1.18-.21,2.17-.56,2.96-1.05.82-.52,1.46-1.21,1.91-2.09.49-.91.89-2.08,1.23-3.5h1.73l-.68,8.96Z"/><path d="M149.64,47.11c0,1.52.06,2.71.18,3.6.12.88.35,1.56.68,2.05.36.49.86.8,1.5.96.67.15,1.53.24,2.59.27v1.73h-14.74v-1.73c1.06-.03,1.91-.12,2.55-.27.67-.18,1.18-.5,1.55-.96.36-.45.61-1.09.73-1.91.12-.85.18-1.99.18-3.41v-18.47c0-1.27-.06-2.32-.18-3.14-.09-.85-.3-1.52-.64-2-.3-.49-.76-.82-1.36-1-.61-.21-1.4-.35-2.37-.41v-1.73h13.83v1.73c-.97.03-1.76.15-2.37.36-.58.21-1.03.58-1.36,1.09-.3.49-.52,1.17-.64,2.05-.09.88-.14,2-.14,3.37v17.84Z"/><path d="M188.28,56.16l-21.61-28.48h-.18v19.43c0,1.52.05,2.71.14,3.6.12.88.33,1.56.64,2.05.33.49.79.8,1.37.96.61.15,1.39.24,2.37.27v1.73h-12.24v-1.73c1.06-.03,1.91-.12,2.55-.27.67-.18,1.18-.5,1.55-.96.36-.45.61-1.09.73-1.91.12-.85.18-1.99.18-3.41v-18.47c0-1.27-.06-2.32-.18-3.14-.09-.85-.3-1.52-.64-2-.3-.49-.76-.82-1.37-1-.61-.21-1.4-.35-2.37-.41v-1.73h9.01l19.89,26.53h.18v-17.93c0-1.49-.06-2.67-.18-3.55-.09-.91-.3-1.61-.64-2.09-.3-.49-.76-.8-1.37-.96-.58-.15-1.35-.24-2.32-.27v-1.73h12.24v1.73c-1.06.03-1.93.14-2.59.32-.64.15-1.14.45-1.5.91-.36.45-.61,1.11-.73,1.96-.12.85-.18,1.97-.18,3.37v27.21h-2.73Z"/><path d="M209.59,36.46c1.64,0,3-.09,4.1-.27,1.12-.21,2-.53,2.64-.96.67-.43,1.14-.97,1.41-1.64.3-.67.46-1.46.46-2.37h1.59v12.42h-1.59c0-.91-.14-1.7-.41-2.37-.24-.67-.7-1.21-1.36-1.64-.64-.46-1.52-.79-2.64-1-1.09-.24-2.49-.36-4.19-.36v10.28c0,1,.12,1.84.36,2.5.24.64.65,1.17,1.23,1.59.61.4,1.4.68,2.37.87.97.15,2.17.23,3.6.23,1.61,0,2.97-.11,4.1-.32,1.12-.24,2.06-.64,2.82-1.18.76-.55,1.37-1.26,1.82-2.14.46-.91.83-2.03,1.14-3.37h1.73l-.68,8.96h-28.26v-1.73c1.06-.03,1.91-.12,2.55-.27.67-.15,1.18-.41,1.55-.77s.61-.88.73-1.55c.12-.67.18-1.53.18-2.59v-21.21c0-1.06-.06-1.91-.18-2.55-.09-.67-.3-1.18-.64-1.55-.3-.39-.76-.65-1.37-.77-.61-.15-1.39-.26-2.37-.32v-1.73h26.3l.41,8.01h-1.59c-.18-1.21-.49-2.2-.91-2.96-.39-.79-.96-1.41-1.68-1.87-.7-.46-1.59-.77-2.68-.96-1.09-.18-2.41-.27-3.96-.27h-5.78c-.52,0-.77.26-.77.77v13.06Z"/><path d="M246.48,45.02h1.68c.21,1.36.61,2.59,1.18,3.68.61,1.09,1.35,2.02,2.23,2.78.91.76,1.94,1.35,3.09,1.77,1.18.39,2.46.59,3.82.59,2.24,0,4.02-.53,5.32-1.59,1.3-1.06,1.96-2.5,1.96-4.32,0-.76-.14-1.46-.41-2.09-.24-.64-.67-1.24-1.27-1.82-.61-.61-1.43-1.2-2.46-1.77-1-.58-2.27-1.2-3.82-1.87-1.88-.82-3.46-1.61-4.73-2.37-1.27-.76-2.29-1.55-3.05-2.37-.76-.82-1.3-1.68-1.64-2.59-.3-.94-.46-2-.46-3.18,0-1.4.24-2.68.73-3.87.52-1.18,1.23-2.2,2.14-3.05.91-.88,1.99-1.55,3.23-2,1.24-.48,2.61-.73,4.1-.73,1.33,0,2.58.21,3.73.64,1.15.42,2.32,1.11,3.5,2.05l1.18-2.05h1.05l.5,9.05h-1.68c-.73-2.49-1.79-4.34-3.18-5.55-1.37-1.21-3.02-1.82-4.96-1.82s-3.32.45-4.41,1.36c-1.09.91-1.64,2.14-1.64,3.68,0,.73.12,1.4.36,2,.24.58.64,1.14,1.18,1.68.55.52,1.26,1.05,2.14,1.59.88.52,1.97,1.06,3.28,1.64,2.24,1,4.11,1.94,5.6,2.82,1.49.85,2.67,1.71,3.55,2.59.88.85,1.5,1.76,1.87,2.73.36.94.55,2,.55,3.19,0,1.52-.3,2.91-.91,4.19-.61,1.27-1.46,2.37-2.55,3.28-1.09.91-2.4,1.62-3.91,2.14-1.52.49-3.18.73-5.01.73s-3.29-.24-4.69-.73c-1.37-.48-2.76-1.3-4.19-2.46l-1.27,2.23h-1.05l-.68-10.19Z"/><path d="M294.69,20.22c2.67,0,5.16.47,7.46,1.41,2.3.94,4.31,2.23,6.01,3.87,1.7,1.64,3.03,3.57,4.01,5.78.97,2.21,1.46,4.61,1.46,7.19s-.5,4.76-1.5,6.92c-.97,2.15-2.3,4.03-4,5.64-1.7,1.58-3.7,2.84-6.01,3.78-2.3.91-4.78,1.36-7.42,1.36s-5.11-.45-7.42-1.36c-2.31-.94-4.31-2.2-6.01-3.78-1.7-1.61-3.05-3.49-4.05-5.64-.97-2.15-1.46-4.46-1.46-6.92,0-2.58.49-4.98,1.46-7.19.97-2.21,2.31-4.14,4-5.78,1.7-1.64,3.7-2.93,6.01-3.87,2.3-.94,4.79-1.41,7.46-1.41ZM294.69,53.66c2,0,3.79-.35,5.37-1.05,1.61-.7,2.97-1.7,4.1-3,1.15-1.3,2.03-2.88,2.64-4.73.61-1.88.91-3.97.91-6.28,0-2.43-.3-4.61-.91-6.55-.61-1.97-1.47-3.64-2.59-5.01-1.12-1.39-2.49-2.46-4.1-3.18-1.61-.76-3.41-1.14-5.41-1.14s-3.81.38-5.42,1.14c-1.61.73-2.97,1.79-4.1,3.18-1.12,1.37-1.99,3.03-2.59,5.01-.61,1.94-.91,4.13-.91,6.55s.3,4.4.91,6.28c.61,1.85,1.47,3.43,2.59,4.73,1.12,1.3,2.49,2.31,4.1,3,1.61.7,3.41,1.05,5.42,1.05Z"/><path d="M348.55,41.6c0,2.4-.24,4.5-.73,6.32-.46,1.82-1.21,3.34-2.28,4.55-1.03,1.21-2.38,2.14-4.05,2.78-1.67.61-3.68.91-6.05.91-2.24,0-4.2-.21-5.87-.64-1.67-.45-3.06-1.18-4.19-2.18-1.12-1.03-1.96-2.37-2.5-4.01-.55-1.64-.82-3.65-.82-6.05v-12.01c0-2.24-.06-3.97-.18-5.19-.09-1.21-.39-2.11-.91-2.69-.36-.39-.86-.65-1.5-.77-.61-.15-1.43-.23-2.46-.23v-1.73h15.52v1.73c-1.03,0-1.87.06-2.5.18-.64.12-1.14.43-1.5.91-.43.55-.7,1.43-.82,2.64-.12,1.18-.18,2.9-.18,5.14v12.38c0,1.55.15,2.93.45,4.14.33,1.18.86,2.2,1.59,3.05.73.82,1.67,1.44,2.82,1.87,1.18.42,2.62.64,4.32.64,3.03,0,5.31-.83,6.83-2.5,1.52-1.7,2.27-4.19,2.27-7.46v-10.97c0-2.7-.11-4.75-.32-6.14-.21-1.4-.61-2.38-1.18-2.96-.42-.39-.96-.64-1.59-.73-.64-.12-1.43-.18-2.37-.18v-1.73h13.2v1.73c-.97,0-1.77.08-2.41.23-.61.15-1.09.48-1.46,1-.46.64-.76,1.64-.91,3-.15,1.33-.23,3.26-.23,5.78v9.19Z"/><path d="M387.2,55.71h-31.58v-.18l23.93-32.95h-12.47c-2.15,0-3.76.49-4.82,1.46-1.06.97-1.81,2.64-2.23,5.01h-1.68l.68-8.37h27.71v.18l-23.71,32.76h14.11c1.55,0,2.82-.11,3.82-.32,1-.24,1.8-.68,2.41-1.32.64-.64,1.12-1.5,1.46-2.59.36-1.12.68-2.58.96-4.37h1.96l-.55,10.69Z"/><path d="M412.11,43.01h-12.15c-.52,1.24-.96,2.35-1.32,3.32-.36.94-.67,1.76-.91,2.46-.21.7-.36,1.29-.45,1.77-.09.48-.14.88-.14,1.18,0,.85.27,1.44.82,1.78.55.3,1.46.45,2.73.45v1.73h-11.06v-1.73c.7-.09,1.29-.21,1.77-.36.52-.15.96-.36,1.32-.64.39-.27.73-.62,1-1.05.3-.45.59-1,.86-1.64l11.83-29.62h1.96l10.33,25.66c.7,1.7,1.31,3.06,1.82,4.1.51,1,1.02,1.76,1.5,2.28.49.51,1,.85,1.55,1,.58.15,1.26.23,2.05.23v1.77h-14.83v-1.77c1.61,0,2.71-.15,3.32-.46.61-.3.91-.8.91-1.5,0-.3-.02-.58-.05-.82-.03-.27-.09-.56-.18-.87-.06-.3-.17-.64-.32-1-.12-.39-.29-.85-.5-1.37l-1.87-4.92ZM400.87,40.74h10.38l-5.05-13.42-5.32,13.42Z"/></g><g><path d="M113.78,73.64c1.74,0,3.25.33,4.52.99,1.28.64,2.26,1.57,2.93,2.77.69,1.21,1.03,2.63,1.03,4.26s-.34,3.06-1.03,4.26c-.67,1.19-1.65,2.11-2.93,2.75-1.27.63-2.77.94-4.52.94h-4.97v-15.98h4.97ZM113.78,87.9c2.06,0,3.64-.54,4.72-1.63,1.09-1.1,1.63-2.64,1.63-4.61s-.55-3.54-1.65-4.65c-1.09-1.12-2.65-1.67-4.7-1.67h-2.89v12.56h2.89Z"/><path d="M131.91,75.34v5.34h5.82v1.72h-5.82v5.5h6.51v1.72h-8.6v-16h8.6v1.72h-6.51Z"/><path d="M151.45,89.78c-1.05,0-2-.18-2.84-.55-.82-.38-1.47-.9-1.95-1.56-.47-.67-.72-1.44-.73-2.32h2.22c.08.75.38,1.38.92,1.9.55.5,1.35.76,2.38.76s1.77-.24,2.34-.73c.58-.5.87-1.15.87-1.93,0-.61-.17-1.11-.5-1.49-.34-.38-.76-.67-1.26-.87-.5-.2-1.18-.41-2.04-.64-1.06-.27-1.9-.55-2.55-.83-.63-.27-1.17-.7-1.63-1.28-.44-.6-.66-1.39-.66-2.38,0-.87.22-1.64.66-2.32.44-.67,1.06-1.19,1.86-1.56.81-.37,1.73-.55,2.77-.55,1.5,0,2.72.37,3.67,1.12.96.75,1.51,1.74,1.63,2.98h-2.29c-.08-.61-.4-1.15-.96-1.61-.56-.47-1.31-.71-2.25-.71-.87,0-1.58.23-2.13.69-.55.44-.82,1.07-.82,1.88,0,.58.16,1.05.48,1.42.34.37.74.65,1.22.85.49.18,1.17.4,2.04.64,1.06.29,1.9.58,2.54.87.64.27,1.19.71,1.65,1.31.46.58.69,1.38.69,2.38,0,.78-.21,1.51-.62,2.2-.41.69-1.02,1.25-1.83,1.67-.81.43-1.76.64-2.87.64Z"/><path d="M166.74,73.64v15.98h-2.09v-15.98h2.09Z"/><path d="M187.21,78.27c-.44-.93-1.08-1.65-1.92-2.15-.84-.52-1.82-.78-2.93-.78s-2.12.26-3.03.78c-.89.5-1.59,1.24-2.11,2.2-.5.95-.76,2.05-.76,3.3s.25,2.35.76,3.3c.52.95,1.22,1.68,2.11,2.2.9.51,1.91.76,3.03.76,1.56,0,2.84-.47,3.85-1.4,1.01-.93,1.6-2.19,1.77-3.78h-6.37v-1.7h8.6v1.6c-.12,1.31-.53,2.52-1.24,3.62-.7,1.08-1.63,1.95-2.77,2.59-1.15.63-2.42.94-3.83.94-1.48,0-2.84-.34-4.06-1.03-1.22-.7-2.19-1.67-2.91-2.91-.7-1.24-1.05-2.64-1.05-4.2s.35-2.96,1.05-4.2c.72-1.25,1.69-2.22,2.91-2.91,1.22-.7,2.58-1.05,4.06-1.05,1.7,0,3.19.42,4.49,1.26,1.31.84,2.27,2.02,2.87,3.55h-2.5Z"/><path d="M210.33,89.62h-2.09l-8.39-12.72v12.72h-2.09v-16h2.09l8.39,12.7v-12.7h2.09v16Z"/><path d="M223.76,89.78c-1.05,0-2-.18-2.84-.55-.82-.38-1.47-.9-1.95-1.56-.47-.67-.72-1.44-.73-2.32h2.22c.08.75.38,1.38.92,1.9.55.5,1.35.76,2.38.76s1.77-.24,2.34-.73c.58-.5.87-1.15.87-1.93,0-.61-.17-1.11-.51-1.49-.34-.38-.76-.67-1.26-.87-.51-.2-1.18-.41-2.04-.64-1.05-.27-1.9-.55-2.54-.83-.63-.27-1.17-.7-1.63-1.28-.44-.6-.66-1.39-.66-2.38,0-.87.22-1.64.66-2.32.44-.67,1.06-1.19,1.86-1.56.81-.37,1.74-.55,2.77-.55,1.5,0,2.72.37,3.67,1.12.96.75,1.51,1.74,1.63,2.98h-2.29c-.08-.61-.4-1.15-.96-1.61-.57-.47-1.31-.71-2.25-.71-.87,0-1.58.23-2.13.69-.55.44-.82,1.07-.82,1.88,0,.58.16,1.05.48,1.42.34.37.74.65,1.21.85.49.18,1.17.4,2.04.64,1.05.29,1.9.58,2.54.87.64.27,1.19.71,1.65,1.31.46.58.69,1.38.69,2.38,0,.78-.21,1.51-.62,2.2-.41.69-1.02,1.25-1.83,1.67-.81.43-1.76.64-2.87.64Z"/></g><path d="M67,109H20c-11.03,0-20-8.97-20-20V20C0,8.97,8.97,0,20,0h47c11.03,0,20,8.97,20,20v69c0,11.03-8.97,20-20,20ZM20,2C10.08,2,2,10.07,2,20v69c0,9.92,8.08,18,18,18h47c9.92,0,18-8.08,18-18V20c0-9.92-8.08-18-18-18H20Z"/><path d="M51.89,50.34c-.52-.14-.95-.25-1.28-.32-.35-.09-.64-.16-.87-.19-.25-.05-.48-.09-.69-.1-.21-.01-.43-.02-.68-.01l-.37-.1.43-1.61.37.1c.23.13.47.25.71.36.21.1.48.2.8.32.32.1.72.22,1.19.36.47.13,1.1.29,1.87.5l16.12,4.32c.77.21,1.41.38,1.91.51.48.11.88.21,1.21.28.31.05.58.09.81.11.24.02.5.04.79.04l.37.1-.43,1.61-.37-.1c-.21-.12-.4-.23-.59-.32-.19-.09-.39-.18-.62-.25-.24-.09-.53-.18-.85-.27-.35-.11-.78-.23-1.3-.37l-18.51-4.96Z"/><path d="M50.64,41.11c-.21-.06-.39-.1-.52-.11-.14-.04-.26-.05-.36-.04-.11-.01-.2,0-.3.03-.09.03-.2.07-.31.13l-.15-.04.55-2.07.15.04c.08.11.16.2.25.28.08.07.18.15.3.21.13.05.28.11.47.18.19.05.44.12.76.2l6.51,1.74c.31.08.57.15.77.21.2.03.36.06.5.08.13,0,.25-.01.35-.04.1-.02.22-.07.35-.12l.15.04-.55,2.07-.15-.04c-.07-.11-.14-.2-.2-.27-.07-.07-.14-.13-.23-.17-.09-.06-.2-.11-.33-.14-.14-.05-.31-.11-.52-.17l-7.47-2Z"/><path d="M46.49,57.07c-.19-.05-.35-.08-.47-.1-.13-.03-.24-.04-.32-.03-.1,0-.19,0-.27.03-.09.03-.18.08-.28.14l-.14-.04.55-2.07.14.04c.07.11.14.2.22.27.07.07.16.14.26.2.11.05.25.1.42.17.17.05.4.11.68.18l5.86,1.57c.28.07.51.14.69.18.18.03.33.05.45.07.12,0,.22-.02.32-.05s.2-.07.33-.13l.14.04-.55,2.07-.14-.04c-.06-.1-.12-.19-.18-.26-.06-.07-.13-.12-.2-.16-.08-.06-.18-.1-.3-.13-.12-.05-.28-.1-.47-.15l-6.73-1.8Z"/><path d="M42.13,34.64c.11.69.21,1.5.28,2.45.08.94.11,2.07.11,3.37v15.2c.01.19.11.37.28.46.27.15.66.37.85.5v-16.15c-.01-1.3,0-2.43.05-3.37.07-.93.17-1.74.28-2.42,0-.02,0-.03,0-.05.15-.64.32-1.19.5-1.66.19-.47.41-.92.67-1.36v-.6h-4.16v.54c.26.43.49.89.67,1.36.19.51.34,1.09.45,1.74Z"/><path d="M47.76,65.83s-.04.05-.06.07c-1.12,1.16-2.47,1.83-4.05,2.01l-.06-3.75c0-.36-.18-.69-.48-.89-.25-.17-.51-.35-.77-.51,0,.02,0,.03,0,.05-.04,1.02-.05,1.59-.16,2.32-.11.76-.26,1.4-.45,1.9-.19.51-.43.98-.73,1.41v.54h2.64c2.1,0,3.91-.64,5.43-1.91h0c-.47-.39-.92-.8-1.31-1.26Z"/><path d="M71.33,65.15c-.19-.47-.34-1.03-.45-1.69-.11-.65-.21-1.43-.28-2.34-.08-.87-.11-.94-.11-2.21v-2.36c-.05-.02-1.11-.44-1.12-.45v2.75c0,1.27-.04,1.36-.11,2.26-.08.91-.17,1.68-.28,2.34-.11.65-.26,1.21-.45,1.69-.19.47-.41.91-.67,1.3v.54h4.16v-.54c-.26-.4-.49-.83-.67-1.3Z"/><path d="M69.36,52.92c.38.09.75.2,1.12.31v-22.22h-1.12c-1.99,0-3.71.51-5.18,1.52-1.43,1.02-2.68,2.36-3.77,4.02-1.09,1.67-2.04,3.57-2.87,5.71-.83,2.17-1.59,4.39-2.31,6.63-.71,2.28-1.42,4.51-2.14,6.69-.63,2.07-1.36,3.92-2.19,5.57.7.46,1.35,1,1.99,1.54.95-1.51,1.81-3.21,2.57-5.1.86-2.14,1.67-4.35,2.42-6.63.79-2.25,1.56-4.48,2.31-6.69.75-2.17,1.56-4.15,2.42-5.93.9-1.74,1.89-3.17,2.98-4.3,1.09-1.12,2.34-1.76,3.77-1.9v20.77Z"/><path d="M55.63,74.41c-.06-.11-.67-1.43-.77-1.69-1.19.09-1.52.15-3,.17h-16.66v-12.11c0-.47-.25-.9-.66-1.13l-.68-.39c-.93-.53-1.81-1.12-2.71-1.7v10.51c0,.97-.05,1.78-.15,2.45-.05.61-.15,1.15-.31,1.6-.15.46-.38.97-.69,1.53v.76h25.63s0,0,0,0Z"/><path d="M64.31,69.76c-.71,1.02-1.51,1.78-3.45,2.29-.29.08-.62.15-.96.22.01.02.02.04.03.06.13.22.22.46.32.7.09.23.11.49.13.73.01.23-.04.45-.14.66h4.75v-4.66h-.69Z"/><path d="M58.9,72.59c-.9-2.72-2.4-5.13-4.48-7.21-2.11-2.15-4.66-4.07-7.63-5.76-2.97-1.69-6.02-3.33-9.13-4.9-3.65-1.83-6.55-3.37-9.22-4.84-2.97-1.69-5.51-3.56-7.6-5.6-2.14-2.05-3.68-4.39-4.61-7.01-.93-2.62-.93-5.68,0-9.18.46-1.72,1.16-3.35,2.1-4.9.9-1.6,2.09-2.97,3.55-4.11,1.97-1.64,4.21-2.72,6.73-3.26,2.52-.54,5.04-.6,7.57-.19,2.53.41,4.95,1.3,7.28,2.66,2.33,1.36,4.28,3.12,5.86,5.29,1.53,2.15,2.6,4.68,3.19,7.58.44,2.23.42,4.57-.06,7.18-.04.24.1.46.33.53.33.1.64.22.96.36.59-2.88.72-5.57.34-8.04-.43-2.91-1.33-5.47-2.69-7.68-1.4-2.27-3.13-4.19-5.19-5.74-2.11-1.57-4.39-2.73-6.82-3.49-2.42-.81-4.89-1.15-7.4-1.03-2.55.06-4.93.6-7.16,1.64-2.27.98-4.25,2.47-5.95,4.5-1.75,2.01-3.04,4.56-3.87,7.66-1.11,4.13-1.27,7.78-.48,10.95.8,3.11,2.22,5.9,4.25,8.34,2,2.38,4.46,4.52,7.38,6.41,2.87,1.88,5.88,3.66,9.01,5.34,3.1,1.62,6.16,3.21,9.17,4.75,3.02,1.55,5.62,3.22,7.83,5.03,2.17,1.74,3.78,3.7,4.83,5.88,1.06,2.13,1.22,4.6.47,7.4-.53,1.97-1.46,3.59-2.81,4.86-1.39,1.26-2.99,2.21-4.79,2.83-1.84.56-3.8.8-5.89.72-2.09-.08-4.09-.49-6-1.21-1.97-.74-3.77-1.77-5.42-3.11-1.63-1.39-2.92-3.08-3.86-5.07l-1.19.31c1.03,2.86,2.4,5.31,4.12,7.36,1.68,1.98,3.56,3.54,5.63,4.67,2.07,1.14,4.21,1.81,6.42,2.04,2.16.21,4.22-.11,6.19-.95,1.97-.84,3.75-2.19,5.35-4.03,1.57-1.9,2.75-4.35,3.55-7.35.99-3.69,1.03-6.9.12-9.62Z"/><path d="M69.76,74.79l-.12-.92c-.15-1.14-1.05-2.03-2.18-2.18l-.92-.12.92-.12c1.14-.15,2.03-1.05,2.18-2.18l.12-.92.12.92c.15,1.14,1.05,2.03,2.18,2.18l.92.12-.92.12c-1.14.15-2.03,1.05-2.18,2.18l-.12.92Z"/><path d="M52.22,48.42l-.12-.92c-.15-1.14-1.05-2.03-2.18-2.18l-.92-.12.92-.12c1.14-.15,2.03-1.05,2.18-2.18l.12-.92.12.92c.15,1.14,1.05,2.03,2.18,2.18l.92.12-.92.12c-1.14.15-2.03,1.05-2.18,2.18l-.12.92Z"/></svg>
-  </a>
-  <ul class="foot-links">
-    <li><a href="#sobre">Sobre</a></li>
-    <li><a href="#servicos">Serviços</a></li>
-    <li><a href="#portfolio">Portfólio</a></li>
-    <li><a href="#depoimentos">Depoimentos</a></li>
-  </ul>
-  <p class="foot-copy">© 2026 Line Souza Designs. Todos os direitos reservados.</p>
-</footer>
+.hero-sub {
+  margin-top:38px;
+  font-size:1.05rem; font-weight:300; letter-spacing:.14em;
+  color:rgba(240,235,227,.5);
+  opacity:0; transform:translateY(18px);
+  animation:fadeUp .8s 1.05s ease forwards;
+}
 
-<!-- Scripts -->
-<script type="module" src="/src/main.js"></script>
-</body>
-</html>
+.hero-cta {
+  margin-top:52px;
+  display:inline-flex; align-items:center; gap:18px;
+  opacity:0; transform:translateY(18px);
+  animation:fadeUp .8s 1.25s ease forwards;
+}
+
+.btn-primary {
+  display:inline-flex; align-items:center; gap:12px;
+  padding:15px 40px; background:var(--terra); color:var(--cream);
+  text-decoration:none; font-size:.82rem;
+  letter-spacing:.24em; text-transform:uppercase; font-weight:400;
+  position:relative; overflow:hidden;
+}
+.btn-primary::before {
+  content:''; position:absolute; inset:0; background:var(--terra-dark);
+  transform:translateX(-100%); transition:transform .4s ease;
+}
+.btn-primary span { position:relative; z-index:1; }
+.btn-primary:hover::before { transform:translateX(0); }
+
+.btn-ghost {
+  display:inline-flex; align-items:center; gap:10px;
+  color:rgba(240,235,227,.5); text-decoration:none;
+  font-size:.82rem; letter-spacing:.2em; text-transform:uppercase; font-weight:300;
+  transition:color .3s, gap .3s;
+}
+.btn-ghost:hover { color:var(--terra); gap:16px; }
+
+.scroll-hint {
+  position:absolute; bottom:44px; left:50%; transform:translateX(-50%);
+  z-index:3; display:flex; flex-direction:column; align-items:center; gap:10px;
+  opacity:0; animation:fadeUp .8s 1.7s ease forwards;
+}
+.scroll-hint span { font-size:.72rem; letter-spacing:.32em; text-transform:uppercase; color:rgba(240,235,227,.35); }
+.scroll-bar { width:1px; height:48px; background:linear-gradient(var(--terra),transparent); animation:pulse 2s ease-in-out infinite; }
+
+/* ─────────────────────────────────────────────── MARQUEE */
+.marquee-wrap {
+  overflow:hidden; padding:36px 0;
+  background:var(--terra);
+  border-top:1px solid rgba(255,255,255,.08);
+  border-bottom:1px solid rgba(255,255,255,.08);
+}
+.marquee-track {
+  display:flex; width:max-content;
+  animation:marq 22s linear infinite;
+}
+.marquee-track:hover { animation-play-state:paused; }
+.m-item {
+  white-space:nowrap; padding:0 56px;
+  font-family:'Cormorant Garamond',serif;
+  font-size:1.05rem; font-weight:300; font-style:italic;
+  color:rgba(255,255,255,.82); letter-spacing:.1em;
+  display:flex; align-items:center; gap:56px;
+}
+.m-item::after { content:'✦'; font-style:normal; font-size:.45rem; opacity:.5; }
+
+/* ─────────────────────────────────────────────── COMMONS */
+section { position:relative; overflow:hidden; }
+
+.tag {
+  font-size:.82rem; letter-spacing:.5em; text-transform:uppercase;
+  color:var(--terra); font-weight:400;
+  display:flex; align-items:center; gap:14px;
+}
+.tag::before { content:''; display:block; width:36px; height:1px; background:var(--terra); }
+
+/* ─────────────────────────────────────────────── SOBRE */
+#sobre {
+  padding:140px 64px;
+  background:linear-gradient(175deg,#2C1508 0%,#1e0e04 100%);
+}
+.sobre-grid {
+  max-width:1180px; margin:0 auto;
+  display:grid; grid-template-columns:1fr 1fr; gap:96px; align-items:center;
+}
+.sobre-h {
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(2.4rem,4.8vw,4.2rem);
+  font-weight:300; line-height:1.06; color:var(--cream); margin:22px 0 34px;
+}
+.sobre-h em { font-style:italic; color:var(--terra-light); }
+.sobre-p { font-size:1.05rem; line-height:1.9; font-weight:300; color:rgba(240,235,227,.58); margin-bottom:18px; }
+.sobre-stats {
+  display:grid; grid-template-columns:1fr 1fr; gap:28px;
+  margin-top:52px; padding-top:52px;
+  border-top:1px solid rgba(175,87,18,.18);
+}
+.stat-n { font-family:'Cormorant Garamond',serif; font-size:2.8rem; font-weight:300; color:var(--terra); line-height:1; }
+.stat-l { font-size:.8rem; letter-spacing:.18em; text-transform:uppercase; color:rgba(240,235,227,.38); margin-top:6px; font-weight:300; }
+
+.sobre-photo-wrap { position:relative; }
+.sobre-photo {
+  width:100%; aspect-ratio:4/5; object-fit:cover; object-position:top center;
+  display:block; border:1px solid rgba(175,87,18,.15);
+  filter:saturate(.88); transition:filter .6s;
+}
+.sobre-photo:hover { filter:saturate(1.05); }
+.sobre-caption {
+  position:absolute; bottom:0; left:0; right:0; padding:28px 28px 24px;
+  background:linear-gradient(transparent,rgba(44,21,8,.96));
+}
+.sobre-name { font-family:'Cormorant Garamond',serif; font-size:1.7rem; font-weight:300; color:var(--cream); }
+.sobre-role { font-size:.78rem; letter-spacing:.25em; text-transform:uppercase; color:var(--terra); margin-top:4px; }
+
+/* ─────────────────────────────────────────────── SERVIÇOS */
+#servicos { padding:140px 64px; background:var(--cream); }
+
+.serv-head { max-width:1180px; margin:0 auto 72px; display:flex; align-items:flex-end; justify-content:space-between; }
+.serv-h { font-family:'Cormorant Garamond',serif; font-size:clamp(2.4rem,4.8vw,3.8rem); font-weight:300; line-height:1.06; color:var(--brown); margin-top:18px; }
+.serv-h em { font-style:italic; color:var(--terra); }
+.serv-aside { max-width:300px; font-size:1rem; line-height:1.8; color:rgba(44,21,8,.45); font-weight:300; text-align:right; }
+
+.serv-grid { max-width:1180px; margin:0 auto; display:grid; grid-template-columns:repeat(3,1fr); gap:3px; }
+
+.card {
+  background:var(--brown); padding:52px 40px;
+  position:relative; overflow:hidden; cursor:none;
+  transition:transform .5s cubic-bezier(.23,1,.32,1);
+}
+.card:hover { transform:translateY(-10px); }
+.card::after {
+  content:''; position:absolute; bottom:0; left:0; right:0; height:2px; background:var(--terra);
+  transform:scaleX(0); transform-origin:left; transition:transform .5s cubic-bezier(.23,1,.32,1);
+}
+.card:hover::after { transform:scaleX(1); }
+
+.card-num { font-family:'Cormorant Garamond',serif; font-size:3.8rem; font-weight:300; color:rgba(175,87,18,.12); line-height:1; margin-bottom:28px; transition:color .4s; }
+.card:hover .card-num { color:rgba(175,87,18,.28); }
+.card-ico { width:46px; height:46px; margin-bottom:28px; border:1px solid rgba(175,87,18,.28); display:flex; align-items:center; justify-content:center; transition:all .4s; }
+.card:hover .card-ico { border-color:var(--terra); background:rgba(196,98,45,.08); }
+.card-ico svg { width:20px; height:20px; stroke:var(--terra); fill:none; stroke-width:1.5; }
+.card-name { font-family:'Cormorant Garamond',serif; font-size:1.55rem; font-weight:400; color:var(--cream); line-height:1.2; margin-bottom:18px; }
+.card-desc { font-size:1rem; line-height:1.85; font-weight:300; color:rgba(240,235,227,.45); margin-bottom:32px; }
+.card-list { list-style:none; display:flex; flex-direction:column; gap:9px; margin-bottom:40px; }
+.card-list li { font-size:.92rem; color:rgba(240,235,227,.4); font-weight:300; display:flex; align-items:center; gap:12px; letter-spacing:.04em; }
+.card-list li::before { content:''; display:block; width:18px; height:1px; background:var(--terra); flex-shrink:0; }
+.card-cta { display:inline-flex; align-items:center; gap:10px; font-size:.8rem; letter-spacing:.25em; text-transform:uppercase; color:var(--terra); text-decoration:none; font-weight:400; transition:gap .3s; }
+.card-cta:hover { gap:18px; }
+
+.card.wed { background:linear-gradient(135deg,#3D1F0D 0%,#5a2e14 50%,#3D1F0D 100%); border:1px solid rgba(201,148,58,.2); }
+.card.wed .card-name { color:var(--gold); }
+.card.wed .card-cta { color:var(--gold); }
+.card.wed::after { background:var(--gold); }
+.card.wed .card-ico { border-color:rgba(201,148,58,.28); }
+.card.wed .card-ico svg { stroke:var(--gold); }
+.card.wed:hover .card-ico { border-color:var(--gold); background:rgba(201,148,58,.08); }
+
+/* ─────────────────────────────────────────────── PORTFOLIO */
+#portfolio { padding:140px 64px; background:linear-gradient(180deg,#1a0c05 0%,#261205 100%); }
+
+.porto-head { max-width:1180px; margin:0 auto 72px; }
+.porto-h { font-family:'Cormorant Garamond',serif; font-size:clamp(2.4rem,4.8vw,4rem); font-weight:300; line-height:1.06; color:var(--cream); margin-top:18px; }
+.porto-h em { font-style:italic; color:var(--terra); }
+
+.filters { display:flex; gap:2px; margin-top:40px; flex-wrap:wrap; }
+.f-btn {
+  padding:9px 22px; font-size:.78rem; letter-spacing:.2em; text-transform:uppercase;
+  font-weight:400; background:transparent; font-family:'Jost',sans-serif;
+  border:1px solid rgba(175,87,18,.2); color:rgba(235,237,236,.38); cursor:none; transition:all .3s;
+}
+.f-btn.on,.f-btn:hover { background:var(--terra); border-color:var(--terra); color:var(--cream); }
+
+.porto-masonry { max-width:1180px; margin:52px auto 0; columns:3; column-gap:3px; }
+
+.pi { break-inside:avoid; margin-bottom:3px; position:relative; overflow:hidden; cursor:none; display:block; }
+.pi img { width:100%; display:block; transition:transform .7s cubic-bezier(.23,1,.32,1),filter .5s; filter:saturate(.82); }
+.pi:hover img { transform:scale(1.06); filter:saturate(1.05); }
+.pi-over { position:absolute; inset:0; background:linear-gradient(transparent 30%,rgba(44,21,8,.96)); opacity:0; transition:opacity .45s; display:flex; align-items:flex-end; padding:26px; }
+.pi:hover .pi-over { opacity:1; }
+.pi-client { font-family:'Cormorant Garamond',serif; font-size:1.15rem; font-weight:400; color:var(--cream); }
+.pi-type { font-size:.76rem; letter-spacing:.2em; text-transform:uppercase; color:var(--terra); margin-top:3px; }
+
+/* ─────────────────────────────────────────────── PROCESSO */
+#processo { padding:140px 64px; background:var(--cream); }
+.proc-grid { max-width:1180px; margin:0 auto; display:grid; grid-template-columns:1fr 1.5fr; gap:96px; align-items:start; }
+.proc-h { font-family:'Cormorant Garamond',serif; font-size:clamp(2.2rem,4vw,3.4rem); font-weight:300; color:var(--brown); margin:22px 0 28px; line-height:1.1; }
+.proc-h em { font-style:italic; color:var(--terra); }
+.proc-p { font-size:1.05rem; line-height:1.9; color:rgba(44,21,8,.5); font-weight:300; }
+.proc-steps { display:flex; flex-direction:column; }
+.step { padding:32px 0; border-bottom:1px solid rgba(44,21,8,.1); display:grid; grid-template-columns:72px 1fr; gap:20px; align-items:start; transition:padding-left .3s; }
+.step:first-child { padding-top:0; }
+.step:hover { padding-left:8px; }
+.step-n { font-family:'Cormorant Garamond',serif; font-size:2rem; font-weight:300; color:rgba(175,87,18,.22); line-height:1; padding-top:4px; }
+.step-title { font-family:'Cormorant Garamond',serif; font-size:1.25rem; font-weight:400; color:var(--brown); margin-bottom:6px; }
+.step-desc { font-size:1rem; line-height:1.75; color:rgba(44,21,8,.48); font-weight:300; }
+
+/* ─────────────────────────────────────────────── CTA */
+#cta { padding:160px 64px; text-align:center; background:var(--brown); position:relative; overflow:hidden; }
+#cta::before { content:''; position:absolute; inset:0; background:radial-gradient(ellipse 65% 65% at 50% 50%,rgba(175,87,18,.1),transparent); }
+.cta-inner { position:relative; z-index:1; }
+.cta-h { font-family:'Cormorant Garamond',serif; font-size:clamp(3rem,7vw,7.5rem); font-weight:300; line-height:.92; color:var(--cream); margin:32px 0 44px; letter-spacing:-.02em; }
+.cta-h em { font-style:italic; color:var(--terra-light); display:block; }
+.cta-sub { font-size:1.05rem; color:rgba(240,235,227,.38); font-weight:300; max-width:460px; margin:0 auto 60px; line-height:1.85; }
+.cta-btns { display:flex; gap:14px; justify-content:center; flex-wrap:wrap; }
+
+.btn-wpp { display:inline-flex; align-items:center; gap:14px; padding:18px 46px; background:var(--terra); color:var(--cream); text-decoration:none; font-size:.88rem; letter-spacing:.2em; text-transform:uppercase; font-weight:400; position:relative; overflow:hidden; }
+.btn-wpp::before { content:''; position:absolute; inset:0; background:#25D366; transform:scaleX(0); transform-origin:left; transition:transform .4s ease; }
+.btn-wpp span,.btn-wpp svg { position:relative; z-index:1; }
+.btn-wpp:hover::before { transform:scaleX(1); }
+.btn-wpp svg { width:19px; height:19px; fill:currentColor; }
+
+.btn-ig { display:inline-flex; align-items:center; gap:12px; padding:18px 46px; border:1px solid rgba(196,98,45,.35); color:rgba(240,235,227,.6); text-decoration:none; font-size:.88rem; letter-spacing:.2em; text-transform:uppercase; font-weight:400; transition:all .35s; }
+.btn-ig:hover { border-color:var(--terra); color:var(--terra); }
+
+/* ─────────────────────────────────────────────── FOOTER */
+footer { padding:44px 64px; background:#130804; display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:20px; border-top:1px solid rgba(175,87,18,.1); }
+.foot-logo-link { display:flex; align-items:center; text-decoration:none; }
+.foot-logo-svg { width:160px; height:auto; fill:rgba(235,237,236,.45); transition:fill .3s; }
+.foot-logo-link:hover .foot-logo-svg { fill:var(--cream); }
+.foot-links { display:flex; gap:28px; list-style:none; }
+.foot-links a { font-size:.82rem; color:rgba(240,235,227,.28); text-decoration:none; letter-spacing:.14em; text-transform:uppercase; transition:color .3s; }
+.foot-links a:hover { color:var(--terra); }
+.foot-copy { font-size:.8rem; color:rgba(240,235,227,.22); letter-spacing:.08em; }
+
+/* ─────────────────────────────────────────────── KEYFRAMES */
+@keyframes slideUp { to { transform:translateY(0); } }
+@keyframes fadeUp  { to { opacity:1; transform:translateY(0); } }
+@keyframes pulse   { 0%,100%{opacity:1} 50%{opacity:.3} }
+@keyframes marq    { from{transform:translateX(0)} to{transform:translateX(-50%)} }
+
+/* ─────────────────────────────────────────────── REVEAL */
+.rev   { opacity:0; transform:translateY(44px); transition:opacity .85s ease,transform .85s ease; }
+.rev.in{ opacity:1; transform:translateY(0); }
+.rev-l { opacity:0; transform:translateX(-38px); transition:opacity .85s ease,transform .85s ease; }
+.rev-l.in { opacity:1; transform:translateX(0); }
+.d1{transition-delay:.1s} .d2{transition-delay:.2s} .d3{transition-delay:.3s} .d4{transition-delay:.4s}
+
+/* ─────────────────────────────────────────────── RESPONSIVE */
+@media(max-width:920px){
+  nav{padding:22px 28px}
+  nav.stuck{padding:14px 28px}
+  .nav-links{display:none}
+  #sobre,#servicos,#portfolio,#processo,#cta{padding:80px 28px}
+  footer{padding:36px 28px}
+  .sobre-grid,.proc-grid{grid-template-columns:1fr;gap:52px}
+  .serv-head{flex-direction:column;align-items:flex-start;gap:20px}
+  .serv-aside{text-align:left}
+  .serv-grid{grid-template-columns:1fr}
+  .porto-masonry{columns:2}
+  .cta-h{font-size:clamp(2.4rem,8vw,5rem)}
+}
+/* ─────────────────────────────────────────────── DEPOIMENTOS */
+#depoimentos { padding:140px 64px; background:linear-gradient(180deg,#1a0c05 0%,#2C1508 100%); }
+.dep-head { max-width:1180px; margin:0 auto 72px; display:flex; align-items:flex-end; justify-content:space-between; flex-wrap:wrap; gap:32px; }
+.dep-h { font-family:'Cormorant Garamond',serif; font-size:clamp(2.4rem,4.8vw,4rem); font-weight:300; line-height:1.06; color:var(--cream); margin-top:18px; }
+.dep-h em { font-style:italic; color:var(--terra); }
+.dep-rating-avg { display:flex; flex-direction:column; align-items:flex-end; gap:8px; }
+.dep-avg-num { font-family:'Cormorant Garamond',serif; font-size:3.5rem; font-weight:300; color:var(--cream); line-height:1; }
+.dep-avg-stars { display:flex; gap:4px; }
+.dep-avg-stars svg { width:16px; height:16px; fill:var(--terra); }
+.dep-avg-label { font-size:.6rem; letter-spacing:.18em; text-transform:uppercase; color:rgba(240,235,227,.35); }
+.dep-slider-wrap { max-width:1180px; margin:0 auto; overflow:visible; }
+.dep-track { display:grid; grid-template-columns:repeat(3,1fr); gap:3px; }
+.dep-card { background:rgba(44,21,8,.6); border:1px solid rgba(175,87,18,.12); padding:48px 40px; display:flex; flex-direction:column; gap:28px; position:relative; }
+.dep-stars { display:flex; gap:6px; }
+.dep-stars svg { width:14px; height:14px; fill:var(--terra); }
+.dep-quote { font-family:'Cormorant Garamond',serif; font-size:1.25rem; font-weight:300; line-height:1.7; color:rgba(240,235,227,.82); flex:1; font-style:italic; }
+.dep-divider { width:32px; height:1px; background:var(--terra); opacity:.4; }
+.dep-author { display:flex; align-items:center; gap:16px; }
+.dep-avatar { width:42px; height:42px; border-radius:50%; background:var(--terra); display:flex; align-items:center; justify-content:center; font-family:'Cormorant Garamond',serif; font-size:1.2rem; color:var(--cream); font-weight:400; flex-shrink:0; }
+.dep-name { font-size:1.05rem; font-weight:400; color:var(--cream); letter-spacing:.04em; }
+.dep-source { font-size:.82rem; color:rgba(240,235,227,.38); letter-spacing:.08em; margin-top:3px; }
+.dep-badge { display:flex; align-items:center; gap:8px; font-size:.72rem; letter-spacing:.14em; text-transform:uppercase; color:rgba(240,235,227,.25); margin-top:auto; }
+.dep-badge svg { width:12px; height:12px; fill:rgba(240,235,227,.25); flex-shrink:0; }
+@media(max-width:920px){ #depoimentos{padding:80px 28px} .dep-track{grid-template-columns:1fr} .dep-head{flex-direction:column;align-items:flex-start} .dep-rating-avg{align-items:flex-start} }
+
+/* Card name com subtítulo */
+.card-name small { display:block; font-size:.65rem; letter-spacing:.2em; text-transform:uppercase; font-family:'Jost',sans-serif; font-weight:300; color:rgba(240,235,227,.4); margin-top:6px; font-style:normal; }
+.card.wed .card-name small { color:rgba(201,148,58,.5); }
+
+/* ─────────────────────────────────────────────── PARA QUEM É */
+#paraquem {
+  padding: 140px 64px;
+  background: var(--cream);
+}
+.pq-inner {
+  max-width: 1180px; margin: 0 auto;
+  display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start;
+}
+.pq-h {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(2rem, 3.5vw, 3rem);
+  font-weight: 300; line-height: 1.1;
+  color: var(--brown); margin-bottom: 40px;
+}
+.pq-h em { font-style: italic; color: var(--terra); }
+.pq-h-no { margin-top: 0; }
+.pq-em-no { color: #c0392b; }
+.pq-list { list-style: none; display: flex; flex-direction: column; gap: 22px; margin-bottom: 48px; }
+.pq-list li {
+  display: flex; align-items: flex-start; gap: 16px;
+  font-size: 1rem; line-height: 1.75;
+  color: rgba(44,21,8,.72); font-weight: 300;
+}
+.pq-icon { flex-shrink: 0; margin-top: 2px; }
+.pq-icon svg { width: 22px; height: 22px; }
+.pq-icon-yes svg { stroke: #2ecc71; fill: none; stroke-width: 2; }
+.pq-icon-no svg { stroke: #e74c3c; fill: none; stroke-width: 2; }
+.pq-btn { margin-top: 8px; display: inline-flex; }
+
+/* ─────────────────────────────────────────────── FAQ */
+#faq {
+  padding: 120px 64px;
+  background: linear-gradient(175deg, #2C1508 0%, #1e0e04 100%);
+}
+.faq-inner { max-width: 860px; margin: 0 auto; }
+.faq-head { text-align: center; margin-bottom: 64px; }
+.faq-h {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(2.4rem, 4vw, 3.5rem);
+  font-weight: 300; color: var(--cream); margin-top: 16px;
+}
+.faq-h em { font-style: italic; color: var(--terra); }
+.faq-list { display: flex; flex-direction: column; }
+.faq-item { border-bottom: 1px solid rgba(175,87,18,.18); }
+.faq-item:first-child { border-top: 1px solid rgba(175,87,18,.18); }
+.faq-q {
+  width: 100%; display: flex; align-items: center; justify-content: space-between;
+  gap: 24px; padding: 28px 0; background: none; border: none; cursor: pointer;
+  text-align: left; color: var(--cream);
+  font-family: 'Jost', sans-serif; font-size: 1.05rem; font-weight: 400;
+  letter-spacing: .01em; transition: color .3s;
+}
+.faq-q:hover { color: var(--terra); }
+.faq-arrow {
+  width: 20px; height: 20px; flex-shrink: 0;
+  stroke: var(--terra); fill: none; stroke-width: 2;
+  transition: transform .35s ease;
+}
+.faq-item.open .faq-arrow { transform: rotate(180deg); }
+.faq-a {
+  max-height: 0; overflow: hidden;
+  transition: max-height .4s ease, padding .4s ease;
+}
+.faq-item.open .faq-a { max-height: 600px; padding-bottom: 28px; }
+.faq-a p {
+  font-size: 1rem; line-height: 1.85; font-weight: 300;
+  color: rgba(240,235,227,.58); margin-bottom: 12px;
+}
+.faq-a p:last-child { margin-bottom: 0; }
+
+@media(max-width:920px) {
+  #paraquem { padding: 80px 28px; }
+  .pq-inner { grid-template-columns: 1fr; gap: 52px; }
+  #faq { padding: 80px 28px; }
+  .faq-q { font-size: .95rem; }
+}
+
+/* ─────────────────────────────────────────────── PROCESSO */
+#processo {
+  background: var(--cream);
+  overflow: hidden;
+}
+
+.proc-header {
+  max-width: 680px; margin: 0 auto;
+  text-align: center;
+  padding: 120px 64px 80px;
+}
+.proc-h {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(2.2rem, 4vw, 3.4rem);
+  font-weight: 300; color: var(--brown);
+  margin: 22px 0 28px; line-height: 1.1;
+}
+.proc-h em { font-style: italic; color: var(--terra); }
+.proc-p { font-size: 1.05rem; line-height: 1.9; color: rgba(44,21,8,.55); font-weight: 300; }
+
+/* Blocos alternados */
+.proc-bloco {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  min-height: 600px;
+}
+.proc-bloco-esq { }
+.proc-bloco-dir { }
+
+/* Imagem */
+.proc-bloco-img {
+  position: relative;
+  overflow: hidden;
+}
+.proc-bloco-img img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+  transition: transform .8s ease;
+}
+.proc-bloco:hover .proc-bloco-img img {
+  transform: scale(1.03);
+}
+
+/* Steps lado */
+.proc-bloco-steps {
+  padding: 72px 64px;
+  background: var(--cream);
+  display: flex; flex-direction: column;
+  justify-content: center;
+  gap: 0;
+}
+
+.proc-bloco-esq .proc-bloco-steps { padding-left: 80px; }
+.proc-bloco-dir .proc-bloco-steps { padding-right: 80px; }
+
+.proc-step {
+  display: grid;
+  grid-template-columns: 56px 1fr;
+  gap: 16px;
+  padding: 28px 0;
+  border-bottom: 1px solid rgba(44,21,8,.08);
+  align-items: start;
+  transition: padding-left .3s;
+}
+.proc-step:first-child { padding-top: 0; border-top: 1px solid rgba(44,21,8,.08); }
+.proc-step:hover { padding-left: 6px; }
+
+.proc-step-n {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 2rem; font-weight: 300;
+  color: rgba(175,87,18,.25); line-height: 1;
+  padding-top: 3px;
+}
+.proc-step-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.3rem; font-weight: 400;
+  color: var(--brown); margin-bottom: 8px;
+  line-height: 1.2;
+}
+.proc-step-desc {
+  font-size: 1rem; line-height: 1.75;
+  color: rgba(44,21,8,.5); font-weight: 300;
+}
+
+/* Divisor entre blocos */
+.proc-bloco-dir {
+  border-top: 1px solid rgba(44,21,8,.08);
+}
+
+@media(max-width:920px) {
+  .proc-header { padding: 80px 28px 52px; }
+  .proc-bloco { grid-template-columns: 1fr; }
+  .proc-bloco-img { height: 320px; }
+  .proc-bloco-esq .proc-bloco-img { order: -1; }
+  .proc-bloco-dir .proc-bloco-img { order: -1; }
+  .proc-bloco-steps { padding: 48px 28px !important; }
+}
