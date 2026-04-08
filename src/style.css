@@ -399,7 +399,7 @@ section { position:relative; overflow:hidden; }
   max-width: 520px;
 }
 
-/* STEPS — linha só entre os itens, sem borda no primeiro nem no último */
+/* STEPS */
 .proc-step {
   display: grid;
   grid-template-columns: 50px 1fr;
@@ -414,18 +414,20 @@ section { position:relative; overflow:hidden; }
 
 .proc-step-n {
   font-family: 'Cormorant Garamond', serif;
-  font-size: 1.6rem;
+  font-size: 2rem;
   color: rgba(175,87,18,.3);
 }
+
 .proc-step-title {
   font-family: 'Cormorant Garamond', serif;
-  font-size: 1.2rem;
+  font-size: 1.5rem;
   color: var(--brown);
-  margin-bottom: 6px;
+  margin-bottom: 8px;
 }
+
 .proc-step-desc {
-  font-size: .95rem;
-  line-height: 1.7;
+  font-size: 1.05rem;
+  line-height: 1.8;
   color: rgba(44,21,8,.5);
 }
 
@@ -449,7 +451,6 @@ section { position:relative; overflow:hidden; }
   .proc-bloco-dir {
     grid-template-columns: 1fr;
     gap: 40px;
-    text-align: center;
   }
 
   .proc-bloco-dir .proc-bloco-img,
@@ -464,15 +465,24 @@ section { position:relative; overflow:hidden; }
 
   .proc-bloco-steps {
     max-width: 100%;
+    text-align: left;
   }
 
   .proc-step {
-    grid-template-columns: 1fr;
-    text-align: center;
+    grid-template-columns: 50px 1fr;
+    text-align: left;
+  }
+
+  .proc-step-title {
+    font-size: 1.3rem;
+  }
+
+  .proc-step-desc {
+    font-size: 1rem;
   }
 
   .proc-eyebrow {
-    justify-content: center;
+    justify-content: flex-start;
   }
 
   .proc-eyebrow::before {
@@ -481,7 +491,7 @@ section { position:relative; overflow:hidden; }
 
   .proc-h,
   .proc-p {
-    text-align: center;
+    text-align: left;
   }
 }
 
