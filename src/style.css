@@ -317,18 +317,17 @@ section { position:relative; overflow:hidden; }
   overflow: hidden;
 }
 
-/* HEADER ALINHADO À ESQUERDA */
 .proc-header {
   max-width: 1100px;
   margin: 0 auto;
   padding: 120px 20px 60px;
-  text-align: left;
+  text-align: left;        /* garante alinhamento à esquerda */
 }
 
-/* "COMO FUNCIONA" */
 .proc-eyebrow {
   display: flex;
   align-items: center;
+  justify-content: flex-start;   /* ← força à esquerda */
   gap: 12px;
   font-size: 0.75rem;
   letter-spacing: 3px;
@@ -343,7 +342,6 @@ section { position:relative; overflow:hidden; }
   background: var(--terra);
 }
 
-/* TÍTULO */
 .proc-h {
   font-family: 'Cormorant Garamond', serif;
   font-size: clamp(2.4rem, 4vw, 3.2rem);
@@ -352,18 +350,20 @@ section { position:relative; overflow:hidden; }
   line-height: 1.2;
   margin-bottom: 20px;
   max-width: 700px;
+  text-align: left;        /* ← explícito */
 }
 .proc-h em {
   font-style: italic;
   color: var(--terra);
 }
 
-/* TEXTO */
 .proc-p {
   max-width: 520px;
   font-size: 1rem;
   line-height: 1.8;
   color: rgba(44,21,8,.55);
+  text-align: left;        /* ← explícito */
+  margin-left: 0;          /* ← remove qualquer auto centering */
 }
 
 /* GRID PRINCIPAL */
@@ -373,11 +373,10 @@ section { position:relative; overflow:hidden; }
   align-items: center;
   gap: 80px;
   max-width: 1100px;
-  margin: 0 auto;          /* ← remove justify-content, usa só margin auto */
+  margin: 0 auto;
   padding: 60px 20px;
 }
 
-/* IMAGEM */
 .proc-bloco-img {
   width: 100%;
   max-width: 420px;
@@ -391,12 +390,10 @@ section { position:relative; overflow:hidden; }
   object-fit: cover;
 }
 
-/* TEXTO LATERAL */
 .proc-bloco-steps {
   max-width: 520px;
 }
 
-/* STEPS */
 .proc-step {
   display: grid;
   grid-template-columns: 50px 1fr;
@@ -424,12 +421,11 @@ section { position:relative; overflow:hidden; }
   color: rgba(44,21,8,.5);
 }
 
-/* SEGUNDO BLOCO: imagem vai para a direita */
 .proc-bloco-dir {
-  grid-template-columns: 1fr 420px;  /* ← inverte a ordem das colunas */
+  grid-template-columns: 1fr 420px;
 }
 .proc-bloco-dir .proc-bloco-img {
-  order: 2;                           /* ← empurra imagem para direita */
+  order: 2;
 }
 .proc-bloco-dir .proc-bloco-steps {
   order: 1;
@@ -473,6 +469,11 @@ section { position:relative; overflow:hidden; }
 
   .proc-eyebrow::before {
     display: none;
+  }
+
+  .proc-h,
+  .proc-p {
+    text-align: center;
   }
 }
 
