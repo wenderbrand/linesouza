@@ -317,21 +317,42 @@ section { position:relative; overflow:hidden; }
   overflow: hidden;
 }
 
-/* HEADER CENTRAL */
+/* 🔥 HEADER ALINHADO À ESQUERDA */
 .proc-header {
-  max-width: 720px;
+  max-width: 1100px;
   margin: 0 auto;
-  text-align: center;
   padding: 120px 20px 60px;
+  text-align: left;
 }
 
+/* 🔥 "COMO FUNCIONA" */
+.proc-eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 0.75rem;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--terra);
+  margin-bottom: 20px;
+}
+
+.proc-eyebrow::before {
+  content: "";
+  width: 40px;
+  height: 1px;
+  background: var(--terra);
+}
+
+/* TÍTULO */
 .proc-h {
   font-family: 'Cormorant Garamond', serif;
   font-size: clamp(2.4rem, 4vw, 3.2rem);
   font-weight: 300;
   color: var(--brown);
-  margin: 20px 0;
   line-height: 1.2;
+  margin-bottom: 20px;
+  max-width: 700px;
 }
 
 .proc-h em {
@@ -339,16 +360,18 @@ section { position:relative; overflow:hidden; }
   color: var(--terra);
 }
 
+/* TEXTO */
 .proc-p {
+  max-width: 520px;
   font-size: 1rem;
   line-height: 1.8;
   color: rgba(44,21,8,.55);
 }
 
-/* 🔥 GRID PRINCIPAL MAIS LIMPO */
+/* 🔥 GRID PRINCIPAL */
 .proc-bloco {
   display: grid;
-  grid-template-columns: 420px 1fr; /* controla imagem */
+  grid-template-columns: 420px 1fr;
   align-items: center;
   justify-content: center;
   gap: 80px;
@@ -357,7 +380,7 @@ section { position:relative; overflow:hidden; }
   padding: 60px 20px;
 }
 
-/* 🔥 IMAGEM AJUSTADA */
+/* IMAGEM */
 .proc-bloco-img {
   width: 100%;
   max-width: 420px;
@@ -372,7 +395,7 @@ section { position:relative; overflow:hidden; }
   object-fit: cover;
 }
 
-/* 🔥 TEXTO MAIS ORGANIZADO */
+/* TEXTO LATERAL */
 .proc-bloco-steps {
   max-width: 520px;
 }
@@ -409,7 +432,7 @@ section { position:relative; overflow:hidden; }
   color: rgba(44,21,8,.5);
 }
 
-/* 🔥 REMOVE LINHA ESTRANHA DO MEIO */
+/* REMOVE LINHA EXTRA */
 .proc-bloco-dir {
   border-top: none;
 }
@@ -438,6 +461,14 @@ section { position:relative; overflow:hidden; }
   .proc-step {
     grid-template-columns: 1fr;
     text-align: center;
+  }
+
+  .proc-eyebrow {
+    justify-content: center;
+  }
+
+  .proc-eyebrow::before {
+    display: none;
   }
 }
 
