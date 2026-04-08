@@ -312,18 +312,158 @@ section { position:relative; overflow:hidden; }
 .pi-type { font-size:.76rem; letter-spacing:.2em; text-transform:uppercase; color:var(--terra); margin-top:3px; }
 
 /* ─────────────────────────────────────────────── PROCESSO */
-#processo { padding:140px 64px; background:var(--cream); }
-.proc-grid { max-width:1180px; margin:0 auto; display:grid; grid-template-columns:1fr 1.5fr; gap:96px; align-items:start; }
-.proc-h { font-family:'Cormorant Garamond',serif; font-size:clamp(2.2rem,4vw,3.4rem); font-weight:300; color:var(--brown); margin:22px 0 28px; line-height:1.1; }
-.proc-h em { font-style:italic; color:var(--terra); }
-.proc-p { font-size:1.05rem; line-height:1.9; color:rgba(44,21,8,.5); font-weight:300; }
-.proc-steps { display:flex; flex-direction:column; }
-.step { padding:32px 0; border-bottom:1px solid rgba(44,21,8,.1); display:grid; grid-template-columns:72px 1fr; gap:20px; align-items:start; transition:padding-left .3s; }
-.step:first-child { padding-top:0; }
-.step:hover { padding-left:8px; }
-.step-n { font-family:'Cormorant Garamond',serif; font-size:2rem; font-weight:300; color:rgba(175,87,18,.22); line-height:1; padding-top:4px; }
-.step-title { font-family:'Cormorant Garamond',serif; font-size:1.25rem; font-weight:400; color:var(--brown); margin-bottom:6px; }
-.step-desc { font-size:1rem; line-height:1.75; color:rgba(44,21,8,.48); font-weight:300; }
+#processo {
+  background: var(--cream);
+  overflow: hidden;
+}
+
+.proc-header {
+  max-width: 680px;
+  margin: 0 auto;
+  text-align: center;
+  padding: 120px 64px 80px;
+}
+
+.proc-h {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(2.2rem, 4vw, 3.4rem);
+  font-weight: 300;
+  color: var(--brown);
+  margin: 22px 0 28px;
+  line-height: 1.1;
+}
+
+.proc-h em {
+  font-style: italic;
+  color: var(--terra);
+}
+
+.proc-p {
+  font-size: 1.05rem;
+  line-height: 1.9;
+  color: rgba(44,21,8,.55);
+  font-weight: 300;
+}
+
+/* 🔥 BLOCO AJUSTADO */
+.proc-bloco {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;          /* centraliza conteúdo */
+  min-height: auto;             /* remove altura gigante */
+}
+
+/* IMAGEM CONTROLADA */
+.proc-bloco-img {
+  position: relative;
+  overflow: hidden;
+  height: 480px;                /* controla altura visual */
+}
+
+.proc-bloco-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+  transition: transform .8s ease;
+}
+
+.proc-bloco:hover .proc-bloco-img img {
+  transform: scale(1.03);
+}
+
+/* TEXTO MAIS EQUILIBRADO */
+.proc-bloco-steps {
+  padding: 100px 80px;          /* mais respiro */
+  background: var(--cream);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+/* lados */
+.proc-bloco-esq .proc-bloco-steps {
+  padding-left: 100px;
+}
+
+.proc-bloco-dir .proc-bloco-steps {
+  padding-right: 100px;
+}
+
+/* STEPS */
+.proc-step {
+  display: grid;
+  grid-template-columns: 56px 1fr;
+  gap: 16px;
+  padding: 28px 0;
+  border-bottom: 1px solid rgba(44,21,8,.08);
+  align-items: start;
+  transition: padding-left .3s;
+}
+
+.proc-step:first-child {
+  padding-top: 0;
+  border-top: 1px solid rgba(44,21,8,.08);
+}
+
+.proc-step:hover {
+  padding-left: 6px;
+}
+
+.proc-step-n {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 2rem;
+  font-weight: 300;
+  color: rgba(175,87,18,.25);
+  line-height: 1;
+  padding-top: 3px;
+}
+
+.proc-step-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.3rem;
+  font-weight: 400;
+  color: var(--brown);
+  margin-bottom: 8px;
+  line-height: 1.2;
+}
+
+.proc-step-desc {
+  font-size: 1rem;
+  line-height: 1.75;
+  color: rgba(44,21,8,.5);
+  font-weight: 300;
+}
+
+/* divisor */
+.proc-bloco-dir {
+  border-top: 1px solid rgba(44,21,8,.08);
+}
+
+/* RESPONSIVO */
+@media(max-width:920px) {
+  .proc-header {
+    padding: 80px 28px 52px;
+  }
+
+  .proc-bloco {
+    grid-template-columns: 1fr;
+  }
+
+  .proc-bloco-img {
+    height: 280px; /* menor no mobile */
+  }
+
+  .proc-bloco-esq .proc-bloco-img,
+  .proc-bloco-dir .proc-bloco-img {
+    order: -1;
+  }
+
+  .proc-bloco-steps {
+    padding: 48px 28px !important;
+  }
+}
 
 /* ─────────────────────────────────────────────── CTA */
 #cta { padding:160px 64px; text-align:center; background:var(--brown); position:relative; overflow:hidden; }
