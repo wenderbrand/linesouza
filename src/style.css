@@ -349,15 +349,15 @@ section { position:relative; overflow:hidden; }
 .proc-bloco {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  align-items: center;          /* centraliza conteúdo */
-  min-height: auto;             /* remove altura gigante */
+  align-items: center;
+  min-height: auto; /* remove altura gigante */
 }
 
-/* IMAGEM CONTROLADA */
+/* 🔥 IMAGEM VERTICAL */
 .proc-bloco-img {
   position: relative;
   overflow: hidden;
-  height: 480px;                /* controla altura visual */
+  aspect-ratio: 4 / 5; /* vertical */
 }
 
 .proc-bloco-img img {
@@ -373,16 +373,15 @@ section { position:relative; overflow:hidden; }
   transform: scale(1.03);
 }
 
-/* TEXTO MAIS EQUILIBRADO */
+/* TEXTO */
 .proc-bloco-steps {
-  padding: 100px 80px;          /* mais respiro */
+  padding: 100px 80px;
   background: var(--cream);
   display: flex;
   flex-direction: column;
   justify-content: center;
 }
 
-/* lados */
 .proc-bloco-esq .proc-bloco-steps {
   padding-left: 100px;
 }
@@ -452,7 +451,7 @@ section { position:relative; overflow:hidden; }
   }
 
   .proc-bloco-img {
-    height: 280px; /* menor no mobile */
+    aspect-ratio: 4 / 5; /* mantém vertical no mobile */
   }
 
   .proc-bloco-esq .proc-bloco-img,
