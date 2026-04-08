@@ -345,19 +345,24 @@ section { position:relative; overflow:hidden; }
   font-weight: 300;
 }
 
-/* 🔥 BLOCO AJUSTADO */
+/* 🔥 LAYOUT AJUSTADO */
 .proc-bloco {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 0.8fr 1.2fr; /* imagem menor */
   align-items: center;
-  min-height: auto; /* remove altura gigante */
+  max-width: 1200px;
+  margin: 0 auto;
+  gap: 60px;
+  padding: 80px 40px;
 }
 
-/* 🔥 IMAGEM VERTICAL */
+/* 🔥 IMAGEM CONTROLADA */
 .proc-bloco-img {
   position: relative;
   overflow: hidden;
   aspect-ratio: 4 / 5; /* vertical */
+  max-width: 380px; /* 🔥 tamanho ideal */
+  width: 100%;
 }
 
 .proc-bloco-img img {
@@ -367,6 +372,7 @@ section { position:relative; overflow:hidden; }
   object-position: center;
   display: block;
   transition: transform .8s ease;
+  border-radius: 6px;
 }
 
 .proc-bloco:hover .proc-bloco-img img {
@@ -375,7 +381,7 @@ section { position:relative; overflow:hidden; }
 
 /* TEXTO */
 .proc-bloco-steps {
-  padding: 100px 80px;
+  padding: 40px 20px;
   background: var(--cream);
   display: flex;
   flex-direction: column;
@@ -383,11 +389,11 @@ section { position:relative; overflow:hidden; }
 }
 
 .proc-bloco-esq .proc-bloco-steps {
-  padding-left: 100px;
+  padding-left: 20px;
 }
 
 .proc-bloco-dir .proc-bloco-steps {
-  padding-right: 100px;
+  padding-right: 20px;
 }
 
 /* STEPS */
@@ -395,7 +401,7 @@ section { position:relative; overflow:hidden; }
   display: grid;
   grid-template-columns: 56px 1fr;
   gap: 16px;
-  padding: 28px 0;
+  padding: 24px 0;
   border-bottom: 1px solid rgba(44,21,8,.08);
   align-items: start;
   transition: padding-left .3s;
@@ -412,7 +418,7 @@ section { position:relative; overflow:hidden; }
 
 .proc-step-n {
   font-family: 'Cormorant Garamond', serif;
-  font-size: 2rem;
+  font-size: 1.8rem;
   font-weight: 300;
   color: rgba(175,87,18,.25);
   line-height: 1;
@@ -421,16 +427,16 @@ section { position:relative; overflow:hidden; }
 
 .proc-step-title {
   font-family: 'Cormorant Garamond', serif;
-  font-size: 1.3rem;
+  font-size: 1.2rem;
   font-weight: 400;
   color: var(--brown);
-  margin-bottom: 8px;
+  margin-bottom: 6px;
   line-height: 1.2;
 }
 
 .proc-step-desc {
-  font-size: 1rem;
-  line-height: 1.75;
+  font-size: .95rem;
+  line-height: 1.7;
   color: rgba(44,21,8,.5);
   font-weight: 300;
 }
@@ -440,7 +446,7 @@ section { position:relative; overflow:hidden; }
   border-top: 1px solid rgba(44,21,8,.08);
 }
 
-/* RESPONSIVO */
+/* 📱 RESPONSIVO */
 @media(max-width:920px) {
   .proc-header {
     padding: 80px 28px 52px;
@@ -448,19 +454,21 @@ section { position:relative; overflow:hidden; }
 
   .proc-bloco {
     grid-template-columns: 1fr;
+    gap: 30px;
+    padding: 60px 20px;
   }
 
   .proc-bloco-img {
-    aspect-ratio: 4 / 5; /* mantém vertical no mobile */
+    max-width: 100%;
+    aspect-ratio: 4 / 5;
   }
 
-  .proc-bloco-esq .proc-bloco-img,
-  .proc-bloco-dir .proc-bloco-img {
-    order: -1;
+  .proc-bloco-img {
+    margin: 0 auto;
   }
 
   .proc-bloco-steps {
-    padding: 48px 28px !important;
+    padding: 20px 0 !important;
   }
 }
 
