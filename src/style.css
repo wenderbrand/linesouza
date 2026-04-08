@@ -317,6 +317,11 @@ section { position:relative; overflow:hidden; }
   overflow: hidden;
 }
 
+/* Remove borda da classe .tag herdada globalmente */
+#processo .tag {
+  border: none !important;
+}
+
 .proc-header {
   max-width: 1100px;
   margin: 0 auto;
@@ -394,13 +399,13 @@ section { position:relative; overflow:hidden; }
   max-width: 520px;
 }
 
-/* STEPS — sem borda no topo do primeiro nem no fundo do último */
+/* STEPS — linha só entre os itens, sem borda no primeiro nem no último */
 .proc-step {
   display: grid;
   grid-template-columns: 50px 1fr;
   gap: 14px;
   padding: 22px 0;
-  border-bottom: none;
+  border: none;
 }
 
 .proc-step + .proc-step {
@@ -479,6 +484,7 @@ section { position:relative; overflow:hidden; }
     text-align: center;
   }
 }
+
 /* ─────────────────────────────────────────────── CTA */
 #cta { padding:160px 64px; text-align:center; background:var(--brown); position:relative; overflow:hidden; }
 #cta::before { content:''; position:absolute; inset:0; background:radial-gradient(ellipse 65% 65% at 50% 50%,rgba(175,87,18,.1),transparent); }
