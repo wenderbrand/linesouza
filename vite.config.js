@@ -1,13 +1,4 @@
-{
-  "name": "linesouza-designs",
-  "version": "1.0.0",
-  "type": "module",
-  "scripts": {
-    "dev": "vite",
-    "build": "vite build",
-    "preview": "vite preview"
-  },
-  "devDependencies": {
-    "vite": "^5.2.0"
-  }
-}
+import { defineConfig } from 'vite'
+export default defineConfig({
+  build: { outDir: 'dist' }
+})
