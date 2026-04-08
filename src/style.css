@@ -321,13 +321,13 @@ section { position:relative; overflow:hidden; }
   max-width: 1100px;
   margin: 0 auto;
   padding: 120px 20px 60px;
-  text-align: left;        /* garante alinhamento à esquerda */
+  text-align: left;
 }
 
 .proc-eyebrow {
   display: flex;
   align-items: center;
-  justify-content: flex-start;   /* ← força à esquerda */
+  justify-content: flex-start;
   gap: 12px;
   font-size: 0.75rem;
   letter-spacing: 3px;
@@ -350,7 +350,7 @@ section { position:relative; overflow:hidden; }
   line-height: 1.2;
   margin-bottom: 20px;
   max-width: 700px;
-  text-align: left;        /* ← explícito */
+  text-align: left;
 }
 .proc-h em {
   font-style: italic;
@@ -362,8 +362,8 @@ section { position:relative; overflow:hidden; }
   font-size: 1rem;
   line-height: 1.8;
   color: rgba(44,21,8,.55);
-  text-align: left;        /* ← explícito */
-  margin-left: 0;          /* ← remove qualquer auto centering */
+  text-align: left;
+  margin-left: 0;
 }
 
 /* GRID PRINCIPAL */
@@ -394,16 +394,19 @@ section { position:relative; overflow:hidden; }
   max-width: 520px;
 }
 
+/* STEPS — sem borda no topo do primeiro nem no fundo do último */
 .proc-step {
   display: grid;
   grid-template-columns: 50px 1fr;
   gap: 14px;
   padding: 22px 0;
-  border-bottom: 1px solid rgba(44,21,8,.08);
+  border-bottom: none;
 }
-.proc-step:first-child {
+
+.proc-step + .proc-step {
   border-top: 1px solid rgba(44,21,8,.08);
 }
+
 .proc-step-n {
   font-family: 'Cormorant Garamond', serif;
   font-size: 1.6rem;
@@ -476,7 +479,6 @@ section { position:relative; overflow:hidden; }
     text-align: center;
   }
 }
-
 /* ─────────────────────────────────────────────── CTA */
 #cta { padding:160px 64px; text-align:center; background:var(--brown); position:relative; overflow:hidden; }
 #cta::before { content:''; position:absolute; inset:0; background:radial-gradient(ellipse 65% 65% at 50% 50%,rgba(175,87,18,.1),transparent); }
