@@ -176,3 +176,22 @@ document.querySelectorAll('.faq-q').forEach(btn => {
     }
   })
 })
+
+// ══ HAMBURGER MENU ══
+const hamb = document.getElementById('navHamb')
+const navLinks = document.getElementById('navLinks')
+if (hamb && navLinks) {
+  hamb.addEventListener('click', () => {
+    hamb.classList.toggle('open')
+    navLinks.classList.toggle('open')
+    document.body.style.overflow = navLinks.classList.contains('open') ? 'hidden' : ''
+  })
+  // Fechar ao clicar num link
+  navLinks.querySelectorAll('a').forEach(a => {
+    a.addEventListener('click', () => {
+      hamb.classList.remove('open')
+      navLinks.classList.remove('open')
+      document.body.style.overflow = ''
+    })
+  })
+}
