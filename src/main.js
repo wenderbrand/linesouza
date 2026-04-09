@@ -4,30 +4,6 @@
 
 import './style.css'
 
-// ══ CURSOR ══
-const cur  = document.getElementById('cur')
-const ring = document.getElementById('curRing')
-let mx=0, my=0, rx=0, ry=0
-
-document.addEventListener('mousemove', e => {
-  mx = e.clientX; my = e.clientY
-  cur.style.left = mx + 'px'
-  cur.style.top  = my + 'px'
-})
-
-;(function lerp() {
-  rx += (mx - rx) * .11
-  ry += (my - ry) * .11
-  ring.style.left = rx + 'px'
-  ring.style.top  = ry + 'px'
-  requestAnimationFrame(lerp)
-})()
-
-document.querySelectorAll('a,button,.pi,.card').forEach(el => {
-  el.addEventListener('mouseenter', () => { cur.classList.add('big');  ring.classList.add('big')  })
-  el.addEventListener('mouseleave', () => { cur.classList.remove('big'); ring.classList.remove('big') })
-})
-
 // ══ NAV SCROLL ══
 const nav = document.getElementById('nav')
 window.addEventListener('scroll', () => nav.classList.toggle('stuck', scrollY > 50), { passive: true })
@@ -186,7 +162,6 @@ if (hamb && navLinks) {
     navLinks.classList.toggle('open')
     document.body.style.overflow = navLinks.classList.contains('open') ? 'hidden' : ''
   })
-  // Fechar ao clicar num link
   navLinks.querySelectorAll('a').forEach(a => {
     a.addEventListener('click', () => {
       hamb.classList.remove('open')
