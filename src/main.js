@@ -154,19 +154,35 @@ document.querySelectorAll('.faq-q').forEach(btn => {
 })
 
 // ══ HAMBURGER MENU ══
-const hamb = document.getElementById('navHamb')
+const hamb     = document.getElementById('navHamburger')
 const navLinks = document.getElementById('navLinks')
+
 if (hamb && navLinks) {
+  // Abrir/fechar ao clicar no botão
   hamb.addEventListener('click', () => {
-    hamb.classList.toggle('open')
-    navLinks.classList.toggle('open')
-    document.body.style.overflow = navLinks.classList.contains('open') ? 'hidden' : ''
+    const isOpen = navLinks.classList.toggle('open')
+    hamb.classList.toggle('open', isOpen)
+    hamb.setAttribute('aria-expanded', isOpen)
+    document.body.style.overflow = isOpen ? 'hidden' : ''
   })
+
+  // Fechar ao clicar em qualquer link
   navLinks.querySelectorAll('a').forEach(a => {
     a.addEventListener('click', () => {
-      hamb.classList.remove('open')
       navLinks.classList.remove('open')
+      hamb.classList.remove('open')
+      hamb.setAttribute('aria-expanded', 'false')
       document.body.style.overflow = ''
     })
+  })
+
+  // Fechar com ESC
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape' && navLinks.classList.contains('open')) {
+      navLinks.classList.remove('open')
+      hamb.classList.remove('open')
+      hamb.setAttribute('aria-expanded', 'false')
+      document.body.style.overflow = ''
+    }
   })
 }
