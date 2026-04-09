@@ -28,11 +28,20 @@ body::after {
   background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
 }
 
-/* ─────────────────────────────────────────────── CURSOR */
-.cur      { position:fixed; width:8px; height:8px; border-radius:50%; background:var(--terra); pointer-events:none; z-index:9999; transform:translate(-50%,-50%); transition:width .25s,height .25s; }
-.cur-ring { position:fixed; width:34px; height:34px; border-radius:50%; border:1px solid rgba(196,98,45,.45); pointer-events:none; z-index:9998; transform:translate(-50%,-50%); transition:width .3s,height .3s,border-color .3s; }
-.cur.big      { width:22px; height:22px; }
-.cur-ring.big { width:52px; height:52px; border-color:var(--terra); }
+/* ─────────────────────────────────────────────── CURSOR (PADRÃO) */
+body {
+  cursor: default;
+}
+
+/* remove qualquer cursor customizado */
+* {
+  cursor: auto;
+}
+
+/* garante comportamento correto em links e botões */
+a, button {
+  cursor: pointer;
+}
 
 /* ─────────────────────────────────────────────── NAV */
 nav {
