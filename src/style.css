@@ -391,15 +391,16 @@ section { position:relative; overflow:hidden; }
 }
 
 .proc-bloco-img {
-  width: 50%;
-  max-width: 50px;
+  width: 100%;
+  max-width: 360px; /* ⬅️ diminui o tamanho geral */
   aspect-ratio: 4 / 5;
   overflow: hidden;
   border-radius: 8px;
 }
+
 .proc-bloco-img img {
-  width: 50%;
-  height: 50%;
+  width: 100%;
+  height: 100%;
   object-fit: cover;
 }
 
