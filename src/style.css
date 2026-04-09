@@ -963,3 +963,15 @@ footer { padding:44px 64px; background:#130804; display:flex; align-items:center
     padding: 32px 24px !important;
   }
 }
+
+/* ── BOTÃO FORA DO BOX ── */
+.pq-cta {
+  max-width: 760px;
+  margin: 40px auto 0;
+  display: flex;
+  justify-content: center;
+}
+@media(max-width: 768px) {
+  .pq-cta { padding: 0 24px; }
+  .pq-cta .btn-primary { width: 100%; justify-content: center; }
+}
