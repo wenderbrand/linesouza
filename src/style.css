@@ -28,20 +28,11 @@ body::after {
   background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
 }
 
-/* ─────────────────────────────────────────────── CURSOR (PADRÃO) */
-body {
-  cursor: default;
-}
-
-/* remove qualquer cursor customizado */
-* {
-  cursor: auto;
-}
-
-/* garante comportamento correto em links e botões */
-a, button {
-  cursor: pointer;
-}
+/* ─────────────────────────────────────────────── CURSOR */
+.cur      { position:fixed; width:8px; height:8px; border-radius:50%; background:var(--terra); pointer-events:none; z-index:9999; transform:translate(-50%,-50%); transition:width .25s,height .25s; }
+.cur-ring { position:fixed; width:34px; height:34px; border-radius:50%; border:1px solid rgba(196,98,45,.45); pointer-events:none; z-index:9998; transform:translate(-50%,-50%); transition:width .3s,height .3s,border-color .3s; }
+.cur.big      { width:22px; height:22px; }
+.cur-ring.big { width:52px; height:52px; border-color:var(--terra); }
 
 /* ─────────────────────────────────────────────── NAV */
 nav {
@@ -382,63 +373,29 @@ section { position:relative; overflow:hidden; }
 /* GRID PRINCIPAL */
 .proc-bloco {
   display: grid;
-  grid-template-columns: minmax(260px, 320px) 1fr; /* ⬅️ resolve o tamanho */
+  grid-template-columns: 420px 1fr;
   align-items: center;
-  gap: 60px; /* ⬅️ menos espaçamento exagerado */
+  gap: 80px;
   max-width: 1100px;
   margin: 0 auto;
   padding: 60px 20px;
 }
 
-/* IMAGEM */
 .proc-bloco-img {
   width: 100%;
-  max-width: 320px; /* ⬅️ tamanho real controlado */
-  border-radius: 8px;
+  max-width: 420px;
+  aspect-ratio: 4 / 5;
   overflow: hidden;
+  border-radius: 8px;
 }
-
 .proc-bloco-img img {
   width: 100%;
-  height: auto; /* ⬅️ ESSENCIAL pra não esticar */
-  display: block;
+  height: 100%;
+  object-fit: cover;
 }
 
-/* TEXTO */
 .proc-bloco-steps {
   max-width: 520px;
-}
-
-/* LADO INVERTIDO */
-.proc-bloco-dir {
-  grid-template-columns: 1fr minmax(260px, 320px);
-}
-
-.proc-bloco-dir .proc-bloco-img {
-  order: 2;
-}
-
-.proc-bloco-dir .proc-bloco-steps {
-  order: 1;
-}
-
-/* 📱 RESPONSIVO */
-@media (max-width: 920px) {
-  .proc-bloco,
-  .proc-bloco-dir {
-    grid-template-columns: 1fr;
-    gap: 40px;
-  }
-
-  .proc-bloco-img {
-    margin: 0 auto;
-    max-width: 280px; /* menor no mobile */
-  }
-
-  .proc-bloco-dir .proc-bloco-img,
-  .proc-bloco-dir .proc-bloco-steps {
-    order: unset;
-  }
 }
 
 /* STEPS */
